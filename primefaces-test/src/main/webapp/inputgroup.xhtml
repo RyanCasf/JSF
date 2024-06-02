@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsf/composite/componente">
+	
+	<h:head>
+		<title>Input Group</title>
+	</h:head>
+	
+	<h:body>
+		<h:form id="formularioInputGroup">
+			<p:panelGrid
+				columns="4"
+				layout="grid"
+				styleClass="ui-panelgrid-blank">
+				
+				<h:panelGroup>
+					<h:outputText value="Nome:" />
+					<c:inputGroup />
+				</h:panelGroup>
+				
+			</p:panelGrid>
+		</h:form>
+	</h:body>
+</html>

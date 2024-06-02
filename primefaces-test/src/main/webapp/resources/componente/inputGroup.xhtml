@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:composite="http://java.sun.com/jsf/composite">
+	
+	<composite:interface>
+		
+	</composite:interface>
+
+	<composite:implementation>
+		<style>
+			.input-group {
+				display: grid;
+				grid-template-columns: 1fr 1fr 1fr;
+			}
+			
+			.input-group-lateral {
+				padding: .5rem .5rem;
+				border: 1px solid #a8a8a8;
+				border-radius: 3px;
+			    min-width: 1.5rem;
+			    box-shadow: inset 0 2px 2px #8f8f8f;
+			    display: flex;
+			    justify-content: center;
+    			align-items: center;
+		    }
+		</style>
+		
+		<h:panelGroup styleClass="input-group">
+			<h:panelGroup styleClass="input-group-lateral">
+				<p:selectBooleanCheckbox style="display:flex" />
+			</h:panelGroup>
+			<p:inputText placeholder="Nome" />
+			<h:panelGroup styleClass="input-group-lateral">
+				<p:selectBooleanCheckbox style="display:flex" />
+			</h:panelGroup>
+		</h:panelGroup>
+	</composite:implementation>
+</html>
