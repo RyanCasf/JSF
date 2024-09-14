@@ -12,14 +12,22 @@ import org.primefaces.test.crud.historico.Operacao;
 import org.primefaces.test.crud.retorno.RetornoNegocio;
 import org.primefaces.test.crud.retorno.RetornoNegocio.Resultado;
 import org.primefaces.test.crud.util.EntidadeNegocioGenerico;
+import org.primefaces.test.crud.util.ValidatorHelper;
+import org.primefaces.test.crud.util.ValidatorHelper.RetornoValidacao;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class EntidadeNegocio implements Serializable, EntidadeNegocioGenerico {
 	
 	private Entidade entidade = new Entidade();
 	
 	public RetornoNegocio salvar() {
-		if (entidade.getMensagem() == null || entidade.getMensagem().trim().isEmpty()) {
-			return new RetornoNegocio(Resultado.REPROVADO, "...");
+		RetornoValidacao retorno = ValidatorHelper.validar(entidade);
+		if (retorno.getResultado() == Resultado.REPROVADO) {
+			return new RetornoNegocio(Resultado.REPROVADO, retorno.getMensagens());
 		}
 		
 		EntidadeInterface eDAO = criarEntidadeDAO();

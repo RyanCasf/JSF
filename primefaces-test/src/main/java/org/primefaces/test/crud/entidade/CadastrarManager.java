@@ -39,7 +39,7 @@ public class CadastrarManager implements Serializable, CadastrarManagerGenerico<
 	    	RequestContext.getCurrentInstance().update("formularioCadastrarEntidade");
 	    }
 	    else {
-	    	FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Aviso", retorno.getMensagem()));
+	    	retorno.getMensagens().forEach(m -> FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Aviso", m)));
 	    	RequestContext.getCurrentInstance().update("formularioPesquisarEntidade:mensagem");
 	    }
 	}
