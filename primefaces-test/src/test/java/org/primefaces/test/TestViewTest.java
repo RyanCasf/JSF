@@ -5,14 +5,12 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.TestInstance;
-import org.junit.jupiter.api.TestInstance.Lifecycle;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.params.provider.NullSource;
 import org.primefaces.event.timeline.TimelineAddEvent;
 import org.primefaces.event.timeline.TimelineModificationEvent;
 import org.primefaces.test.util.ParameterizedNameDefaultTest;
 
-@TestInstance(Lifecycle.PER_CLASS)
 @DisplayName("Test View")
 class TestViewTest {
 	
@@ -27,38 +25,63 @@ class TestViewTest {
 		assertNotNull(bean.getEnd());
 	}
 	
-	@ParameterizedNameDefaultTest
-	@NullSource
-	@DisplayName("onAdd.")
-	void onAdd(TimelineAddEvent timelineAddEvent) {
-		assertDoesNotThrow(() -> bean.onAdd(null));
+	@Nested
+	@DisplayName("On Add")
+	class OnAdd {
+		
+		@ParameterizedNameDefaultTest
+		@NullSource
+		@DisplayName("Sem evento.")
+		void semEvento(TimelineAddEvent timelineAddEvent) {
+			assertDoesNotThrow(() -> bean.onAdd(null));
+		}
 	}
 	
-	@ParameterizedNameDefaultTest
-	@NullSource
-	@DisplayName("onChange.")
-	void onChange(TimelineModificationEvent timelineModificationEvent) {
-		assertDoesNotThrow(() -> bean.onChange(null));
-    }
-	
-	@ParameterizedNameDefaultTest
-	@NullSource
-	@DisplayName("onChanged.")
-    void onChanged(TimelineModificationEvent timelineModificationEvent) {
-		assertDoesNotThrow(() -> bean.onChanged(null));
-    }
-	
-	@ParameterizedNameDefaultTest
-	@NullSource
-	@DisplayName("onEdit.")
-	void onEdit(TimelineModificationEvent timelineModificationEvent) {
-		assertDoesNotThrow(() -> bean.onEdit(null));
+	@Nested
+	@DisplayName("On Change")
+	class OnChange {
+		
+		@ParameterizedNameDefaultTest
+		@NullSource
+		@DisplayName("Sem evento.")
+		void semEvento(TimelineModificationEvent timelineModificationEvent) {
+			assertDoesNotThrow(() -> bean.onChange(null));
+	    }
 	}
 	
-	@ParameterizedNameDefaultTest
-	@NullSource
-	@DisplayName("onDelete.")
-	void onDelete(TimelineModificationEvent timelineModificationEvent) {
-		assertDoesNotThrow(() -> bean.onDelete(null));
+	@Nested
+	@DisplayName("On Changed")
+	class OnChanged {
+		
+		@ParameterizedNameDefaultTest
+		@NullSource
+		@DisplayName("Sem evento.")
+	    void semEvento(TimelineModificationEvent timelineModificationEvent) {
+			assertDoesNotThrow(() -> bean.onChanged(null));
+	    }
+	}
+	
+	@Nested
+	@DisplayName("On Edit")
+	class OnEdit {
+		
+		@ParameterizedNameDefaultTest
+		@NullSource
+		@DisplayName("Sem evento.")
+		void semEvento(TimelineModificationEvent timelineModificationEvent) {
+			assertDoesNotThrow(() -> bean.onEdit(null));
+		}
+	}
+	
+	@Nested
+	@DisplayName("On Delete")
+	class OnDelete {
+		
+		@ParameterizedNameDefaultTest
+		@NullSource
+		@DisplayName("Sem evento.")
+		void semEvento(TimelineModificationEvent timelineModificationEvent) {
+			assertDoesNotThrow(() -> bean.onDelete(null));
+		}
 	}
 }

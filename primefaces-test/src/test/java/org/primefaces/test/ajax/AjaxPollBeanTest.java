@@ -4,13 +4,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
-import org.junit.jupiter.api.TestInstance.Lifecycle;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.primefaces.test.util.ParameterizedNameDefaultTest;
 
-@TestInstance(Lifecycle.PER_CLASS)
 @DisplayName("Ajax Poll Bean")
 class AjaxPollBeanTest {
 	
@@ -22,23 +19,16 @@ class AjaxPollBeanTest {
 		assertEquals(0, bean.getCount());
 	}
 	
-	@ParameterizedNameDefaultTest
-	@ValueSource(ints = { 1 })
-	@DisplayName("Incrementar.")
-	void incrementar(int valor) {
-		bean.incrementar();
-		assertEquals(valor, bean.getCount());
-	}
-	
-	@Test
-	@DisplayName("Incrementar aleatório.")
-	void incrementarAleatorio() {
-		long numero = (long) Math.abs(Math.random()) + 1;
+	@Nested
+	@DisplayName("Incrementar")
+	class Incrementar {
 		
-		for (long i=0; i<numero; i++) {
+		@ParameterizedNameDefaultTest
+		@ValueSource(ints = { 1 })
+		@DisplayName("Aceito.")
+		void aceito(int valor) {
 			bean.incrementar();
+			assertEquals(valor, bean.getCount());
 		}
-		
-		assertEquals(numero, bean.getCount());
 	}
 }

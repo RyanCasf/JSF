@@ -2,7 +2,6 @@ package org.primefaces.test.media;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.mockStatic;
 import static org.mockito.Mockito.when;
 
@@ -13,13 +12,15 @@ import javax.faces.context.FacesContext;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
-import org.junit.jupiter.api.TestInstance.Lifecycle;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
 import org.mockito.MockedStatic;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-@TestInstance(Lifecycle.PER_CLASS)
 @DisplayName("Media Bean")
+@ExtendWith(MockitoExtension.class)
 class MediaBeanTest {
 	
 	private MediaBean bean;
@@ -29,22 +30,31 @@ class MediaBeanTest {
 		bean = new MediaBean();
 	}
 	
-	@Test
-	@DisplayName("Pegar arquivo.")
-	void pegarArquivo() {
-		try (MockedStatic<FacesContext> facesContext = mockStatic(FacesContext.class)) {
-			FacesContext facesContextMock = mock(FacesContext.class);
-			facesContext.when(() -> FacesContext.getCurrentInstance()).thenReturn(facesContextMock);
-			
-			ExternalContext externalContextMock = mock(ExternalContext.class);
-			when(facesContextMock.getExternalContext()).thenReturn(externalContextMock);
-			
-			InputStream inputStreamMock = mock(InputStream.class);
-			when(externalContextMock.getResourceAsStream("/resources/pdf/guide.pdf")).thenReturn(inputStreamMock);
-			
-			assertNotNull(bean.getArquivo().getStream());
-			assertEquals("application/pdf", bean.getArquivo().getContentType());
-			assertEquals("guide.pdf", bean.getArquivo().getName());
+	@Nested
+	@DisplayName("Arquivo")
+	class Arquivo {
+		
+		@Mock
+		private FacesContext facesContextMock;
+		
+		@Mock
+		private ExternalContext externalContextMock;
+		
+		@Mock
+		private InputStream inputStreamMock;
+		
+		@Test
+		@DisplayName("Aceito.")
+		void aceito() {
+			try (MockedStatic<FacesContext> facesContext = mockStatic(FacesContext.class)) {
+				facesContext.when(() -> FacesContext.getCurrentInstance()).thenReturn(facesContextMock);
+				when(facesContextMock.getExternalContext()).thenReturn(externalContextMock);
+				when(externalContextMock.getResourceAsStream("/resources/pdf/guide.pdf")).thenReturn(inputStreamMock);
+				
+				assertNotNull(bean.getArquivo().getStream());
+				assertEquals("application/pdf", bean.getArquivo().getContentType());
+				assertEquals("guide.pdf", bean.getArquivo().getName());
+			}
 		}
 	}
 }
