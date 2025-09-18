@@ -1,0 +1,158 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    font-family: 'Verdana', sans-serif;
+    height: 100%;
+    padding: 1rem;
+    display: grid;
+    place-items: center;
+    background: #F8F8FF;
+}
+
+.grupo_completo {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 0 auto;
+    gap: 1rem;
+    height: 100%;
+    width: 100%;
+}
+
+.grupo_formulario {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.logo {
+    height: 4rem;
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+}
+
+.formulario_login {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    position: relative;
+    gap: 1.25rem;
+    max-width: 70%;
+    width: 100%;
+}
+
+.grupo_introducao {
+    margin-bottom: 1rem;
+}
+
+.grupo_introducao h1 {
+    color: #11181C;
+    font-size: 2rem;
+    line-height: 2rem;
+    font-weight: normal;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+}
+
+.grupo_introducao h2 {
+    color: #687076;
+    font-size: 1.10rem;
+    font-weight: normal;
+}
+
+.separator_opaco {
+    height: 1px;
+    background: #1D1D1D;
+    opacity: .2;
+}
+
+.campo_texto {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.campo_texto label {
+    color: #11181C;
+}
+
+.campo_texto input {
+    color: #1D1D1D;
+    width: 100%;
+    border: 1px solid #DFE3E6;
+    min-height: 3rem;
+    letter-spacing: .03rem;
+    outline: none;
+    background: #F1F2F3;
+    transition: .25s;
+    border-radius: 0.5rem;
+    text-indent: 1.25rem;
+}
+
+.campo_texto input:focus {
+    border: 1px solid #11181C;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 1px 4px 0px;
+}
+
+.botao_entrar {
+	font-family: 'Verdana', sans-serif;
+    background: #000000;
+    color: white;
+    white-space: nowrap;
+    display: grid;
+    place-items: center;
+    line-height: 2.75rem;
+    outline: none;
+    font-size: 1.125rem;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 0.5rem;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .15);
+}
+
+.esqueceu_sua_senha {
+	color: #1D1D1D;
+	text-align: right;
+	font-size: 0.8rem;
+}
+
+.lado_informacao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    border-radius: 2rem;
+	background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(7,7,80,1) 50%, rgba(2,0,36,1) 100%);
+}
+
+.lado_informacao .grupo_informacao {
+    position: relative;
+    padding: 1rem;
+    max-width: 25rem;
+    background: white;
+    border-radius: 1rem;
+}
+
+.lado_informacao .grupo_informacao img {
+    width: 100%;
+}
+
+@media (max-width: 800px) {
+    .grupo_completo {
+        grid-template-columns: 1fr;
+    }
+	
+    .lado_informacao {
+        display: none;
+    }
+}
