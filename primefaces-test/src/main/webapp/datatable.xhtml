@@ -6,12 +6,16 @@
 	xmlns:p="http://primefaces.org/ui">
 	
 	<h:head>
-		<title>PrimeFaces Test</title>
+		<title>PrimeFaces - Datatable</title>
 	</h:head>
 	
 	<h:body>
 		<style>
-			 button#formularioDataTable\:botaoAdicionar {
+			.ui-panelgrid-cell {
+				width: 100%;
+			}
+			
+			button#formularioDataTable\:botaoAdicionar {
 			 	border-radius: 50px;
 			 }
 			 
@@ -73,7 +77,6 @@
 						<p:autoComplete 
 							dropdown="true" 
 							scrollHeight="250" 
-							style="display:grid" 
 							placeholder="Selecione..." 
 							emptyMessage="Nenhuma UF encontrada!" 
 							value="#{dataTableBean.contato.unidadeFederativa}" 
@@ -122,6 +125,10 @@
 				
 				<p:column headerText="Nome">
 					<h:outputText value="#{c['nome']}" />
+				</p:column>
+				
+				<p:column headerText="UF">
+					<h:outputText value="#{c['unidadeFederativa']}" />
 				</p:column>
 				
 				<p:column headerText="Cidade">
