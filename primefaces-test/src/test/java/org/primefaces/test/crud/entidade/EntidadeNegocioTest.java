@@ -33,7 +33,10 @@ class EntidadeNegocioTest {
 		@BeforeEach
 		void setUp() {
 			negocio.getEntidade().setMensagem("Mensagem");
-			negocio.getEntidade().setCamposDinamicos(new ArrayList<>(Arrays.asList("M^2")));
+			
+			CampoDinamico campoDinamico = new CampoDinamico();
+			campoDinamico.setNome("Unidade de Medida");
+			negocio.getEntidade().setCamposDinamicos(new ArrayList<>(Arrays.asList(campoDinamico)));
 		}
 		
 		@ParameterizedTest(name = "Mensagem: ''{0}''.")
@@ -50,7 +53,7 @@ class EntidadeNegocioTest {
 		@ParameterizedTest(name = "Campos Dinâmicos: ''{0}''.")
 		@NullAndEmptySource
 		@DisplayName("Sem campos dinâmicos.")
-		void semCamposDinamicos(List<String> camposDinamicos) {
+		void semCamposDinamicos(List<CampoDinamico> camposDinamicos) {
 			negocio.getEntidade().setCamposDinamicos(camposDinamicos);
 			
 			RetornoNegocio retorno = negocio.salvar();
