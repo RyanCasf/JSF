@@ -46,12 +46,6 @@
 		<h:form id="formularioDataTable">
 			<p:growl id="informacao" showDetail="true" />
 			
-			<p:ajaxStatus style="width:16px;height:16px">
-				<f:facet name="start">
-					<h:outputText value="Carregando..." />
-				</f:facet>
-			</p:ajaxStatus>
-			
 			<p:panel header="Dados" id="dadosPainel">
 				<p:messages severity="fatal,error" closable="true" />
 				
@@ -137,5 +131,20 @@
 				
 			</p:dataTable>
 		</h:form>
+		
+		<p:ajaxStatus onstart="PF('statusDialog').show()" oncomplete="PF('statusDialog').hide()"/>
+		
+		<p:dialog
+			modal="true"
+			closable="false"
+			resizable="false"
+			draggable="false"
+			showHeader="false"
+			widgetVar="statusDialog">
+			
+			<div class="text-center">
+				<i class="ui-icon ui-icon-arrowrefresh-1-e" aria-hidden="true"></i>
+			</div>
+		</p:dialog>
 	</h:body>
 </html>
