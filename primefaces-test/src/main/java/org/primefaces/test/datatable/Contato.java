@@ -2,10 +2,13 @@ package org.primefaces.test.datatable;
 
 import java.io.Serializable;
 
-import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data @EqualsAndHashCode(of = "nome")
+@Getter
+@Setter
+@EqualsAndHashCode(of = "nome")
 public class Contato implements Serializable {
 	
 	private Long chave;

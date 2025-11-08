@@ -10,7 +10,8 @@ import javax.inject.Named;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
 
-@Named @ViewScoped
+@Named
+@ViewScoped
 public class MediaBean implements Serializable {
 	
 	public StreamedContent getArquivo() {

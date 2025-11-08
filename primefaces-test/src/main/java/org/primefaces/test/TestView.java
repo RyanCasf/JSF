@@ -14,9 +14,13 @@ import org.primefaces.model.timeline.TimelineEvent;
 import org.primefaces.model.timeline.TimelineModel;
 import org.primefaces.util.CalendarioUtil;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data @Named @ViewScoped
+@Getter
+@Setter
+@Named
+@ViewScoped
 public class TestView implements Serializable {
 	
 	private TimelineModel timeline;

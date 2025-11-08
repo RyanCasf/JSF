@@ -8,9 +8,13 @@ import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data @Named @ViewScoped
+@Getter
+@Setter
+@Named
+@ViewScoped
 public class DataBean implements Serializable {
 	
 	private Date data;

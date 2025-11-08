@@ -1,5 +1,8 @@
 package org.primefaces.test.select.menu.custom;
 
+import lombok.Getter;
+
+@Getter
 public enum Cor {
 	
 	VERMELHO("Vermelho", "#FF0000"),
@@ -11,13 +14,5 @@ public enum Cor {
 	Cor(String descricao, String hexadecimal) {
 		this.descricao = descricao;
 		this.hexadecimal = hexadecimal;
-	}
-	
-	public String getDescricao() {
-		return descricao;
-	}
-	
-	public String getHexadecimal() {
-		return hexadecimal;
 	}
 }

@@ -7,7 +7,8 @@ import java.util.List;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
-@Named @ViewScoped
+@Named
+@ViewScoped
 public class ManagerSelectOneMenu implements Serializable {
 	
 	private List<String> opcoes;

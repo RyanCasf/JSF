@@ -5,9 +5,13 @@ import java.io.Serializable;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data @Named @ViewScoped
+@Getter
+@Setter
+@Named
+@ViewScoped
 public class AjaxPollBean implements Serializable {
 	
 	private Long count = 0l;
