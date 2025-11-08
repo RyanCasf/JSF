@@ -2,11 +2,15 @@ package org.primefaces.test.crud.entidade;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.primefaces.test.crud.retorno.RetornoNegocio;
@@ -26,6 +30,12 @@ class EntidadeNegocioTest {
 	@DisplayName("Salvar")
 	class Salvar {
 		
+		@BeforeEach
+		void setUp() {
+			negocio.getEntidade().setMensagem("Mensagem");
+			negocio.getEntidade().setCamposDinamicos(new ArrayList<>(Arrays.asList("M^2")));
+		}
+		
 		@ParameterizedTest(name = "Mensagem: ''{0}''.")
 		@NullAndEmptySource
 		@DisplayName("Sem mensagem.")
@@ -33,9 +43,27 @@ class EntidadeNegocioTest {
 			negocio.getEntidade().setMensagem(mensagem);
 			
 			RetornoNegocio retorno = negocio.salvar();
-			
 			assertEquals(Resultado.REPROVADO, retorno.getResultado());
 			assertEquals("O campo 'Mensagem' é necessário!", retorno.getMensagens().stream().collect(Collectors.joining()));
+		}
+		
+		@ParameterizedTest(name = "Campos Dinâmicos: ''{0}''.")
+		@NullAndEmptySource
+		@DisplayName("Sem campos dinâmicos.")
+		void semCamposDinamicos(List<String> camposDinamicos) {
+			negocio.getEntidade().setCamposDinamicos(camposDinamicos);
+			
+			RetornoNegocio retorno = negocio.salvar();
+			assertEquals(Resultado.REPROVADO, retorno.getResultado());
+			assertEquals("A lista campos dinâmicos não pode estar vazia!", retorno.getMensagens().stream().collect(Collectors.joining()));
+		}
+		
+		@Test
+		@DisplayName("Aceito.")
+		void aceito() {
+			RetornoNegocio retorno = negocio.salvar();
+			assertEquals(Resultado.ACEITO, retorno.getResultado());
+			assertEquals("...", retorno.getMensagem());
 		}
 	}
 }
