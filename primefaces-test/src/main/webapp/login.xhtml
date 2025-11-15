@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html">
+	
+	<h:head>
+		<title>Login</title>
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<h:outputStylesheet name="login.css" />
+	</h:head>
+	
+	<h:body>
+		<h:panelGroup styleClass="grupo_completo">
+	        <h:panelGroup styleClass="grupo_formulario">
+	            <a href="#" title="Logo">
+	            	<h:graphicImage alt="Logo" styleClass="logo" />
+	            </a>
+	            
+	            <h:form styleClass="formulario_login">
+	                <h:panelGroup styleClass="grupo_introducao">
+	                    <h1>{}! &#128079;</h1>
+	                    <h2>Entre com seu usuário!</h2>
+	                </h:panelGroup>
+	                
+                    <div class="separator_opaco"></div>
+                    
+	                <h:panelGroup styleClass="campo_texto">
+	                    <label for="email">E-mail</label>
+	                    <input type="email" autocomplete="off" placeholder="seu@email.com" />
+	                </h:panelGroup>
+	                
+	                <h:panelGroup styleClass="campo_texto">
+	                    <label for="password">Senha</label>
+	                    <input type="password" placeholder="Sua senha" />
+	                </h:panelGroup>
+	                
+	                <button class="botao_entrar" type="submit">Entrar</button>
+	                
+	                <div class="separator_opaco"></div>
+	                
+                	<h:panelGroup>
+                		<a class="esqueceu_sua_senha" href="#" title="Esqueceu sua senha?">Esqueceu sua senha?</a>
+                	</h:panelGroup>
+	            </h:form>
+	        </h:panelGroup>
+	        
+	        <h:panelGroup styleClass="lado_informacao">
+	            <h:panelGroup styleClass="grupo_informacao">
+	            	<h:graphicImage alt="Capa" />
+	            </h:panelGroup>
+	        </h:panelGroup>
+	    </h:panelGroup>
+	</h:body>
+</html>
