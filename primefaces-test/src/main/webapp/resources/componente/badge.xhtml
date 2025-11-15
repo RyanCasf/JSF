@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<ui:composition
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:composite="http://java.sun.com/jsf/composite">
+	
+	<composite:interface>
+		<composite:attribute name="value"/>
+		<composite:attribute name="color"/>
+	</composite:interface>
+	
+	<composite:implementation>
+		<style>
+			.badge {
+				font-weight: 700;
+				border-radius: 2px;
+				padding: 0.25em 0.5rem;
+			}
+			
+			.badge-RED {
+				color: #c63737;
+				background-color: #fdd1d5;
+			}
+			
+			.badge-BLUE {
+				color: #4793bd;
+				background-color: #e0f2fe;
+			}
+			
+			.badge-GREEN {
+				color: #278b4c;
+				background-color: #dcfce7;
+			}
+			
+			.badge-YELLOW {
+				color: #cf6738;
+				background-color: #ffedd5;
+			}
+		</style>
+		
+		<div>
+			<h:outputText value="#{cc.attrs.value}" styleClass="badge badge-#{cc.attrs.color}"/>
+		</div>
+	</composite:implementation>
+</ui:composition>

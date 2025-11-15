@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:p="http://primefaces.org/ui"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsf/composite/componente">
+	
+	<h:head>
+		<title>PrimeFaces - Tabela - Kai</title>
+		<h:outputStylesheet name="css/tema/dracula.css"/>
+	</h:head>
+	
+	<h:body>
+		<h:form id="formularioTabelaKai">
+			<h1>Tabela Kai</h1>
+			
+			<p:dataTable
+				var="e"
+				scrollable="true"
+				scrollHeight="300"
+				value="#{tabelaKaiBean.entidades}"
+				emptyMessage="Nenhum dado encontrado!">
+				
+				<p:column headerText="Nome">
+					<h:outputText value="#{e['nome']}"/>
+				</p:column>
+				
+				<p:column headerText="País">
+					<h:outputText value="#{e['pais']}"/>
+				</p:column>
+				
+				<p:column headerText="Agente">
+					<h:outputText value="#{e['agente']}"/>
+				</p:column>
+				
+				<p:column headerText="Data" style="text-align:center">
+					<h:outputText value="#{e['data']}">
+						<f:convertDateTime pattern="dd/MM/yyyy" locale="pt" timeZone="GMT-3"/>
+					</h:outputText>
+				</p:column>
+				
+				<p:column headerText="Salário" style="text-align:right">
+					<h:outputText value="#{e['salario']}">
+						<f:convertNumber minIntegerDigits="1" minFractionDigits="2"/>
+					</h:outputText>
+				</p:column>
+				
+				<p:column headerText="Status" style="text-align:center">
+					<c:badge value="#{e.status.descricao}" color="#{e.status.cor}"/>
+				</p:column>
+				
+			</p:dataTable>
+		</h:form>
+	</h:body>
+</html>
