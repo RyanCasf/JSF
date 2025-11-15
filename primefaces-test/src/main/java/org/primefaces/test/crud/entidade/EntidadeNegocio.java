@@ -27,7 +27,10 @@ public class EntidadeNegocio implements Serializable, EntidadeNegocioGenerico {
 	public RetornoNegocio salvar() {
 		RetornoValidacao retorno = ValidatorHelper.validar(entidade);
 		if (retorno.getResultado() == Resultado.REPROVADO) {
-			return new RetornoNegocio(Resultado.REPROVADO, retorno.getMensagens());
+			return RetornoNegocio.builder()
+					.resultado(Resultado.REPROVADO)
+					.mensagens(retorno.getMensagens())
+					.build();
 		}
 		
 		EntidadeInterface eDAO = criarEntidadeDAO();
@@ -36,7 +39,7 @@ public class EntidadeNegocio implements Serializable, EntidadeNegocioGenerico {
 		HistoricoInterface hDAO = criarHistoricoDAO();
 		hDAO.registrar(new Operacao(new Date(), "Entidade salva", getUsuatioLogado()));
 		
-		return new RetornoNegocio(Resultado.ACEITO, "...");
+		return RetornoNegocio.builder().resultado(Resultado.ACEITO).mensagem("...").build();
 	}
 	
 	public RetornoNegocio carregar(long chave) {
@@ -44,9 +47,12 @@ public class EntidadeNegocio implements Serializable, EntidadeNegocioGenerico {
 		entidade = eDAO.obter(chave);
 		
 		if (entidade == null) {
-			return new RetornoNegocio(Resultado.REPROVADO, "Entidade não foi encontrada!");
+			return RetornoNegocio.builder()
+					.resultado(Resultado.REPROVADO)
+					.mensagem("Entidade não foi encontrada!")
+					.build();
 		}
 		
-		return new RetornoNegocio(Resultado.ACEITO, "");
+		return RetornoNegocio.builder().resultado(Resultado.ACEITO).mensagem("").build();
 	}
 }

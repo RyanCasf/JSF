@@ -67,7 +67,8 @@ class CadastrarManagerTeste implements CadastrarManagerGenericoTeste<CadastrarMa
 	}
 	
 	private void prepararCarregarReprovado(EntidadeNegocio negocio, Context context) {
-		when(negocio.carregar(0l)).thenReturn(new RetornoNegocio(Resultado.REPROVADO, Arrays.asList("O campo 'Teste' é necessário!")));
+		when(negocio.carregar(0l))
+			.thenReturn(RetornoNegocio.builder().resultado(Resultado.REPROVADO).mensagens(Arrays.asList("O campo 'Teste' é necessário!")).build());
 	}
 	
 	@ParameterizedTest(name = "Visualizar: ''{0}''.")
@@ -90,6 +91,6 @@ class CadastrarManagerTeste implements CadastrarManagerGenericoTeste<CadastrarMa
 	}
 	
 	private void prepararCarregarAceito(EntidadeNegocio negocio, Context context) {
-		when(negocio.carregar(0l)).thenReturn(new RetornoNegocio(Resultado.ACEITO, ""));
+		when(negocio.carregar(0l)).thenReturn(RetornoNegocio.builder().resultado(Resultado.ACEITO).mensagem("").build());
 	}
 }

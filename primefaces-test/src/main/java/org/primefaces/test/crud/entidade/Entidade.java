@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import org.primefaces.test.crud.constraints.NotNullAndBlank;
 import org.primefaces.test.crud.constraints.NotNullAndEmpty;
 
 import lombok.EqualsAndHashCode;
@@ -19,7 +18,7 @@ public class Entidade implements Serializable {
 	
 	private Long chave;
 	
-	@NotNullAndBlank(message = "O campo 'Mensagem' é necessário!")
+	@NotNullAndEmpty(message = "O campo 'Mensagem' é necessário!")
 	private String mensagem;
 	
 	@Valid

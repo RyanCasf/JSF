@@ -5,7 +5,7 @@ import java.util.Collection;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-public class NotNullAndEmptyValidation implements ConstraintValidator<NotNullAndEmpty, Collection<?>> {
+public class NotNullAndEmptyCollectionValidation implements ConstraintValidator<NotNullAndEmpty, Collection<?>> {
 	
 	@Override
 	public boolean isValid(Collection<?> value, ConstraintValidatorContext context) {

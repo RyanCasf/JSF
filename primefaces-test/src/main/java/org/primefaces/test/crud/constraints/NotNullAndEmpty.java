@@ -12,7 +12,10 @@ import javax.validation.Payload;
 @Documented
 @Target({ ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = NotNullAndEmptyValidation.class)
+@Constraint(validatedBy = {
+		NotNullAndEmptyStringValidation.class,
+		NotNullAndEmptyCollectionValidation.class
+})
 public @interface NotNullAndEmpty {
 	
 	String message() default "{javax.validation.constraints.NotNull.message}";
