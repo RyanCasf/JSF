@@ -132,7 +132,7 @@ body {
     align-items: center;
     padding: 2rem;
     border-radius: 2rem;
-	background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(7,7,80,1) 50%, rgba(2,0,36,1) 100%);
+	background: rgba(7,7,80,1);
 }
 
 .lado_informacao .grupo_informacao {
