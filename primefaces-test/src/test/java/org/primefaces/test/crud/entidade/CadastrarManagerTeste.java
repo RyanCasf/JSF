@@ -8,6 +8,8 @@ import static org.mockito.Mockito.mockConstruction;
 import static org.mockito.Mockito.mockStatic;
 import static org.mockito.Mockito.when;
 
+import java.util.Arrays;
+
 import javax.faces.context.FacesContext;
 
 import org.junit.jupiter.api.DisplayName;
@@ -65,7 +67,7 @@ class CadastrarManagerTeste implements CadastrarManagerGenericoTeste<CadastrarMa
 	}
 	
 	private void prepararCarregarReprovado(EntidadeNegocio negocio, Context context) {
-		when(negocio.carregar(0l)).thenReturn(new RetornoNegocio(Resultado.REPROVADO, ""));
+		when(negocio.carregar(0l)).thenReturn(new RetornoNegocio(Resultado.REPROVADO, Arrays.asList("O campo 'Teste' é necessário!")));
 	}
 	
 	@ParameterizedTest(name = "Visualizar: ''{0}''.")
