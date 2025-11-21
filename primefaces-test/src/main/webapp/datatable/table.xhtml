@@ -19,6 +19,20 @@
 					emptyMessage="Nenhum dado encontrado!">
 					
 					<p:column headerText="Nome" style="min-width:200px">
+						<f:facet name="header">
+							<div style="display:grid;grid-template-columns:1fr auto;align-items:center">
+								<h:outputText value="Nome"/>
+								
+								<p:commandLink
+									process="@this"
+									update=":formularioTabelaKai:grupoInformacao"
+									onclick="PF('dlgInformacao').show('#{component.clientId}')">
+									
+									<h:outputText styleClass="ui-icon ui-icon-search" style="justify-self:end"/>
+								</p:commandLink>
+							</div>
+						</f:facet>
+						
 						<h:outputText value="#{e['nome']}"/>
 					</p:column>
 					
@@ -47,6 +61,20 @@
 					</p:column>
 					
 				</p:dataTable>
+				
+				<p:overlayPanel
+					my="right top"
+					dynamic="true"
+					at="right bottom"
+					style="width:300px"
+					widgetVar="dlgInformacao">
+					
+					<p:outputPanel id="grupoInformacao">
+						<h:outputText value="Lorem ipsum dolor 0" style="display:block"/>
+						<h:outputText value="Lorem ipsum dolor 1" style="display:block"/>
+						<h:outputText value="Lorem ipsum dolor 2" style="display:block"/>
+					</p:outputPanel>
+				</p:overlayPanel>
 			</h:form>
 		</ui:define>
 	</ui:composition>
