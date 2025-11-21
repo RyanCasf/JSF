@@ -5,56 +5,57 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 	
-	<h:head>
-		<title>PrimeFaces Test</title>
-		<style>
-			.custom-panel {
-			    display: flex;
-			    width: 100%;
-			    justify-content: space-between;
-			}
-			
-			#formularioSchedule .ui-tooltip.ui-widget.ui-widget-content.ui-shadow.ui-corner-all {
-				padding: 3px 10px;
-			    background-color: #4c4c4c;
-			    color: #fff;
-			    border: none;
-			}
-			
-			.custom-panel-item {
-			    width: 48%;
-			}
-			
-			@media screen and (max-width: 1000px) {
+	<ui:composition template="/template/padrao.xhtml">
+		<ui:define name="titulo">Schedule</ui:define>
+		
+		<ui:define name="conteudo">
+			<style>
 				.custom-panel {
-					flex-direction: column;
+				    display: flex;
+				    width: 100%;
+				    justify-content: space-between;
+				}
+				
+				#formularioSchedule .ui-tooltip.ui-widget.ui-widget-content.ui-shadow.ui-corner-all {
+					padding: 3px 10px;
+				    background-color: #4c4c4c;
+				    color: #fff;
+				    border: none;
 				}
 				
 				.custom-panel-item {
-				    width: 100%;
+				    width: 48%;
 				}
 				
-				.custom-panel-item:first-child {
-					margin-bottom: 5px;
+				@media screen and (max-width: 1000px) {
+					.custom-panel {
+						flex-direction: column;
+					}
+					
+					.custom-panel-item {
+					    width: 100%;
+					}
+					
+					.custom-panel-item:first-child {
+						margin-bottom: 5px;
+					}
 				}
-			}
-		</style>
-	</h:head>
-	
-	<h:body>
-		<h:form id="formularioSchedule">
-			<div class="custom-panel">
-			    <div class="custom-panel-item">
-			        <p:schedule 
-			        	id="schedule" 
-			        	tooltip="true" 
-			        	value="#{scheduleBean.schedule}" />
-			    </div>
-			    
-			    <div class="custom-panel-item">
-			        <p:timeline id="timeline" value="#{scheduleBean.timeline}" />
-			    </div>
-			</div>
-		</h:form>
-	</h:body>
+			</style>
+			
+			<h:form id="formularioSchedule">
+				<div class="custom-panel">
+				    <div class="custom-panel-item">
+				        <p:schedule 
+				        	id="schedule" 
+				        	tooltip="true" 
+				        	value="#{scheduleBean.schedule}" />
+				    </div>
+				    
+				    <div class="custom-panel-item">
+				        <p:timeline id="timeline" value="#{scheduleBean.timeline}" />
+				    </div>
+				</div>
+			</h:form>
+		</ui:define>
+	</ui:composition>
 </html>

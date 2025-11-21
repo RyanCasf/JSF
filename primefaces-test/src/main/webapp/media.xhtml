@@ -5,29 +5,27 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 	
-	<h:head>
-		<title>Media</title>
-	</h:head>
+	<ui:composition template="/template/padrao.xhtml">
+		<ui:define name="titulo">Media</ui:define>
 		
-	<h:body>
-		<h:form class="formularioPDF">
-			<h2 class="titulo">PDF</h2>
-			<p:media 
-				player="pdf" 
-				cache="false" 
-				width="100%" 
-				height="600px" 
-				value="/resources/pdf/guide.pdf">
-				
-				<p id="texto-media">
-				Seu navegador não conseguiu apresentar o pdf, 
-				<p:commandLink ajax="false" value="clique aqui"  id="clique-aqui">
-					<p:fileDownload value="#{mediaBean.arquivo}" />
-				</p:commandLink>
-				para fazer o download.
-				</p>
-	    	</p:media>
-		</h:form>
-    	
-	</h:body>
+		<ui:define name="conteudo">
+			<h:form class="formularioPDF">
+				<p:media 
+					player="pdf" 
+					cache="false" 
+					width="100%" 
+					height="600px" 
+					value="/resources/pdf/guide.pdf">
+					
+					<p id="texto-media">
+					Seu navegador não conseguiu apresentar o pdf, 
+					<p:commandLink ajax="false" value="clique aqui"  id="clique-aqui">
+						<p:fileDownload value="#{mediaBean.arquivo}" />
+					</p:commandLink>
+					para fazer o download.
+					</p>
+		    	</p:media>
+			</h:form>
+		</ui:define>
+	</ui:composition>
 </html>

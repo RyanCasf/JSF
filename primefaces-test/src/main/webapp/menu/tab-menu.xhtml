@@ -5,23 +5,23 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 	
-	<h:head>
-		<title>PrimeFaces - TabMenu</title>
-	</h:head>
-	
-	<h:body>
-		<h:form id="formTabMenu">
-			<p:tabMenu activeIndex="0">
-				<p:menuitem
-					value="Início"
-					icon="ui-icon ui-icon-home"
-				/>
-				
-				<p:menuitem
-					value="Configuração"
-					icon="ui-icon ui-icon-gear"
-				/>
-			</p:tabMenu>
-		</h:form>
-	</h:body>
+	<ui:composition template="/template/padrao.xhtml">
+		<ui:define name="titulo">TabMenu</ui:define>
+		
+		<ui:define name="conteudo">
+			<h:form id="formTabMenu">
+				<p:tabMenu activeIndex="0">
+					<p:menuitem
+						value="Início"
+						icon="ui-icon ui-icon-home"
+					/>
+					
+					<p:menuitem
+						value="Configuração"
+						icon="ui-icon ui-icon-gear"
+					/>
+				</p:tabMenu>
+			</h:form>
+		</ui:define>
+	</ui:composition>
 </html>

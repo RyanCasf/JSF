@@ -5,36 +5,36 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 	
-	<h:head>
-		<title>Color</title>
-	</h:head>
-	
-	<h:body>
-		<h:form id="formularioColor">
-			<p:selectOneMenu
-				id="cor"
-				var="c"
-				converter="corConverter"
-				value="#{selectOneMenuBeanColor.cor}">
-				
-				<f:selectItem itemLabel="Selecione..." itemValue="#{null}" />
-				<f:selectItems
-					var="ct"
-					itemValue="#{ct}"
-					itemLabel="#{ct.descricao}"
-					value="#{selectOneMenuBeanColor.cores}" />
-				
-				<p:column style="width:15px">
-					<div style="width:15px;height:15px;border-radius:10px;background-color:#{c.hexadecimal}"></div>
-				</p:column>
-				
-				<p:column>
-					<f:facet name="header">
-						<h:outputText value="Cor" />
-					</f:facet>
-					<h:outputText value="#{c.descricao}" />
-				</p:column>
-			</p:selectOneMenu>
-		</h:form>
-	</h:body>
+	<ui:composition template="/template/padrao.xhtml">
+		<ui:define name="titulo">Cor</ui:define>
+		
+		<ui:define name="conteudo">
+			<h:form id="formularioColor">
+				<p:selectOneMenu
+					id="cor"
+					var="c"
+					converter="corConverter"
+					value="#{selectOneMenuBeanColor.cor}">
+					
+					<f:selectItem itemLabel="Selecione..." itemValue="#{null}" />
+					<f:selectItems
+						var="ct"
+						itemValue="#{ct}"
+						itemLabel="#{ct.descricao}"
+						value="#{selectOneMenuBeanColor.cores}" />
+					
+					<p:column style="width:15px">
+						<div style="width:15px;height:15px;border-radius:10px;background-color:#{c.hexadecimal}"></div>
+					</p:column>
+					
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Cor" />
+						</f:facet>
+						<h:outputText value="#{c.descricao}" />
+					</p:column>
+				</p:selectOneMenu>
+			</h:form>
+		</ui:define>
+	</ui:composition>
 </html>

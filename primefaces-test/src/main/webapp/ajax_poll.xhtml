@@ -5,21 +5,21 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 	
-	<h:head>
-		<title>Ajax Poll</title>
-	</h:head>
-	
-	<h:body>
-		<h:form id="formularioAjaxPoll">
-			<p:poll 
-				interval="3" 
-				process="@this" 
-				resetValues="true" 
-				update="txtCount" 
-				listener="#{ajaxPollBean.incrementar}" />
-			
-			<h:outputText value="Contador:" style="font-weight:bold" id="label_contador" />
-			<h:outputText value="#{ajaxPollBean.count}" id="txtCount" />
-		</h:form>
-	</h:body>
+	<ui:composition template="/template/padrao.xhtml">
+		<ui:define name="titulo">Ajax Poll</ui:define>
+		
+		<ui:define name="conteudo">
+			<h:form id="formularioAjaxPoll">
+				<p:poll 
+					interval="3" 
+					process="@this" 
+					resetValues="true" 
+					update="txtCount" 
+					listener="#{ajaxPollBean.incrementar}" />
+				
+				<h:outputText value="Contador:" style="font-weight:bold" id="label_contador" />
+				<h:outputText value="#{ajaxPollBean.count}" id="txtCount" />
+			</h:form>
+		</ui:define>
+	</ui:composition>
 </html>

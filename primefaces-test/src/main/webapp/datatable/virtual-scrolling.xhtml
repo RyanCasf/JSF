@@ -5,28 +5,26 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 	
-	<h:head>
-		<title>PrimeFaces - Datatable Virtual Scrolling</title>
-	</h:head>
-	
-	<h:body>
-		<h5>Virtual Scrolling</h5>
+	<ui:composition template="/template/padrao.xhtml">
+		<ui:define name="titulo">Virtual Scrolling</ui:define>
 		
-		<p:dataTable
-			var="e"
-			rows="40"
-			lazy="true"
-			scrollRows="20"
-			scrollable="true"
-			scrollHeight="300"
-			virtualScroll="true"
-			value="#{virtualScrollingBean.model}"
-			emptyMessage="Nenhum dado encontrado!">
-			
-			<p:column headerText="Ordem">
-				<h:outputText value="#{e.ordem}"/>
-			</p:column>
-			
-		</p:dataTable>
-	</h:body>
+		<ui:define name="conteudo">
+			<p:dataTable
+				var="e"
+				rows="40"
+				lazy="true"
+				scrollRows="20"
+				scrollable="true"
+				scrollHeight="300"
+				virtualScroll="true"
+				value="#{virtualScrollingBean.model}"
+				emptyMessage="Nenhum dado encontrado!">
+				
+				<p:column headerText="Ordem">
+					<h:outputText value="#{e.ordem}"/>
+				</p:column>
+				
+			</p:dataTable>
+		</ui:define>
+	</ui:composition>
 </html>

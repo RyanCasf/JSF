@@ -5,81 +5,81 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 	
-	<h:head>
-		<title>Dialog</title>
-	</h:head>
-	
-	<h:body>
-		<h:form>
-			<p:commandButton 
-				process="@this" 
-				value="Abrir dialog (Foco)" 
-				onclick="PF('dlgDialog').show()" />
-				
-			<p:commandButton 
-				process="@this" 
-				value="Abrir dialog (Campo vazio)" 
-				onclick="PF('dlgDialogCampoVazio').show()" />
-		</h:form>
+	<ui:composition template="/template/padrao.xhtml">
+		<ui:define name="titulo">Dialog</ui:define>
 		
-		<p:dialog 
-			modal="true" 
-			position="top"
-			dynamic="true" 
-			header="Dialog" 
-			widgetVar="dlgDialog" 
-			focus="formularioDialog">
-			
-			<h:form id="formularioDialog">
-				<p:panelGrid 
-					columns="2" 
-					layout="grid" 
-					styleClass="ui-panelgrid-blank">
+		<ui:define name="conteudo">
+			<h:form>
+				<p:commandButton 
+					process="@this" 
+					value="Abrir dialog (Foco)" 
+					onclick="PF('dlgDialog').show()" />
 					
-					<h:panelGroup>
-						<h:outputText value="Data:" style="display:block" />
-						<p:calendar  id="calendario" />
-					</h:panelGroup>
-					
-					<h:panelGroup>
-						<h:outputText value="Texto:" style="display:block" />
-						<p:inputText id="texto" />
-					</h:panelGroup>
-					
-				</p:panelGrid>
-				
+				<p:commandButton 
+					process="@this" 
+					value="Abrir dialog (Campo vazio)" 
+					onclick="PF('dlgDialogCampoVazio').show()" />
 			</h:form>
 			
-		</p:dialog>
-		
-		<p:dialog 
-			modal="true" 
-			position="top"
-			dynamic="true" 
-			header="Dialog" 
-			widgetVar="dlgDialogCampoVazio">
-			
-			<h:form id="formularioDialogCampoVazio">
-				<p:panelGrid 
-					columns="2" 
-					layout="grid" 
-					styleClass="ui-panelgrid-blank">
-					
-					<h:panelGroup>
-						<h:outputText value="Data:" />
-						<p:inputText style="width:0;height:0;opacity:0" />
-						<p:calendar  id="calendario" style="display:block" />
-					</h:panelGroup>
-					
-					<h:panelGroup>
-						<h:outputText value="Texto:" style="display:block" />
-						<p:inputText id="texto" />
-					</h:panelGroup>
-					
-				</p:panelGrid>
+			<p:dialog 
+				modal="true" 
+				position="top"
+				dynamic="true" 
+				header="Dialog" 
+				widgetVar="dlgDialog" 
+				focus="formularioDialog">
 				
-			</h:form>
+				<h:form id="formularioDialog">
+					<p:panelGrid 
+						columns="2" 
+						layout="grid" 
+						styleClass="ui-panelgrid-blank">
+						
+						<h:panelGroup>
+							<h:outputText value="Data:" style="display:block" />
+							<p:calendar  id="calendario" />
+						</h:panelGroup>
+						
+						<h:panelGroup>
+							<h:outputText value="Texto:" style="display:block" />
+							<p:inputText id="texto" />
+						</h:panelGroup>
+						
+					</p:panelGrid>
+					
+				</h:form>
+				
+			</p:dialog>
 			
-		</p:dialog>
-	</h:body>
+			<p:dialog 
+				modal="true" 
+				position="top"
+				dynamic="true" 
+				header="Dialog" 
+				widgetVar="dlgDialogCampoVazio">
+				
+				<h:form id="formularioDialogCampoVazio">
+					<p:panelGrid 
+						columns="2" 
+						layout="grid" 
+						styleClass="ui-panelgrid-blank">
+						
+						<h:panelGroup>
+							<h:outputText value="Data:" />
+							<p:inputText style="width:0;height:0;opacity:0" />
+							<p:calendar  id="calendario" style="display:block" />
+						</h:panelGroup>
+						
+						<h:panelGroup>
+							<h:outputText value="Texto:" style="display:block" />
+							<p:inputText id="texto" />
+						</h:panelGroup>
+						
+					</p:panelGrid>
+					
+				</h:form>
+				
+			</p:dialog>
+		</ui:define>
+	</ui:composition>
 </html>

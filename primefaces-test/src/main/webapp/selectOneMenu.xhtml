@@ -5,27 +5,25 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 	
-	<h:head>
-		<title>PrimeFaces Test</title>
-	</h:head>
-	
-	<h:body>
-		<h:form id="formulario">
+	<ui:composition template="/template/padrao.xhtml">
+		<ui:define name="titulo">SelectOneMenu</ui:define>
 		
-			<h:panelGroup>
-				<h:outputText value="Opção:" />
-				<p:selectOneMenu id="selectOpcao">
-					<f:selectItem itemLabel="Selecione..." itemValue="#{null}" />
-					<f:selectItems value="#{managerSelectOneMenu.opcoes}" />
-					
-					<p:ajax 
-						event="focus" 
-						listener="#{managerSelectOneMenu.carregarOpcoes}" 
-						disabled="#{managerSelectOneMenu.opcoes ne null}" 
-						update="selectOpcao" />
-				</p:selectOneMenu>
-			</h:panelGroup>
-				
-		</h:form>
-	</h:body>
+		<ui:define name="conteudo">
+			<h:form id="formulario">
+				<h:panelGroup>
+					<h:outputText value="Opção:" style="display:block"/>
+					<p:selectOneMenu id="selectOpcao">
+						<f:selectItem itemLabel="Selecione..." itemValue="#{null}" />
+						<f:selectItems value="#{managerSelectOneMenu.opcoes}" />
+						
+						<p:ajax 
+							event="focus" 
+							listener="#{managerSelectOneMenu.carregarOpcoes}" 
+							disabled="#{managerSelectOneMenu.opcoes ne null}" 
+							update="selectOpcao" />
+					</p:selectOneMenu>
+				</h:panelGroup>
+			</h:form>
+		</ui:define>
+	</ui:composition>
 </html>
