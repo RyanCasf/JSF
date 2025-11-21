@@ -5,28 +5,26 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 	
-	<h:head>
-		<title>AutoComplete</title>
-	</h:head>
-	
-	<h:body>
-		<h:form id="form">
+	<ui:composition template="/template/padrao.xhtml">
+		<ui:define name="titulo">AutoComplete</ui:define>
 		
-			<h:panelGroup>
-				<h:outputText value="Opção:" id="campo" style="display:block" />
-				<p:autoComplete 
-					minQueryLength="0" 
-					id="textoAutoComplete" 
-					value="#{autoCompleteBean.texto}" 
-					completeMethod="#{autoCompleteBean.complete}">
-					
-					<p:ajax event="itemSelect" listener="#{autoCompleteBean.itemSelect}" process="@this" update="@form" />
-					<p:ajax process="@this" update="@form" />
-				</p:autoComplete>
-			</h:panelGroup>
-			
-			<h:outputText value="#{autoCompleteBean.texto}" />
+		<ui:define name="conteudo">
+			<h:form id="form">
+				<h:panelGroup>
+					<h:outputText value="Opção:" id="campo" style="display:block" />
+					<p:autoComplete 
+						minQueryLength="0" 
+						id="textoAutoComplete" 
+						value="#{autoCompleteBean.texto}" 
+						completeMethod="#{autoCompleteBean.complete}">
+						
+						<p:ajax event="itemSelect" listener="#{autoCompleteBean.itemSelect}" process="@this" update="@form" />
+						<p:ajax process="@this" update="@form" />
+					</p:autoComplete>
+				</h:panelGroup>
 				
-		</h:form>
-	</h:body>
+				<h:outputText value="#{autoCompleteBean.texto}" />
+			</h:form>
+		</ui:define>
+	</ui:composition>
 </html>

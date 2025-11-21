@@ -5,49 +5,46 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 	
-	<h:head>
-		<title>Início</title>
-	</h:head>
-	
-	<h:body>
-		<h:form id="formularioInicio">
-			<p:panelGrid
-				columns="1"
-				layout="grid">
-				
-				<p:link value="AutoComplete" outcome="autocomplete"/>
-				<p:link value="Data" outcome="data"/>
-				<p:link value="Select One Menu" outcome="selectOneMenu"/>
-				<p:link value="Select One Menu (Cor)" outcome="select-one-menu/color"/>
-				
-				<p:separator/>
-				
-				<p:link value="Ajax" outcome="ajax_poll"/>
-				
-				<p:separator/>
-				
-				<p:link value="Datatable" outcome="datatable"/>
-				<p:link value="Datatable (Tabela - Kai)" outcome="datatable/table"/>
-				<p:link value="Virtual Scrolling" outcome="datatable/virtual-scrolling"/>
-				
-				<p:separator/>
-				
-				<p:link value="Media" outcome="media"/>
-				
-				<p:separator/>
-				
-				<p:link value="Dialog" outcome="dialog"/>
-				<p:link value="Dialog (load spinner)" outcome="dialog/load-spinner"/>
-				
-				<p:separator/>
-				
-				<p:link value="TabMenu" outcome="menu/tab-menu"/>
-				
-				<p:separator/>
-				
-				<p:link value="Schedule" outcome="schedule"/>
-				<p:link value="Timeline" outcome="timeline"/>
-			</p:panelGrid>
-		</h:form>
-	</h:body>
+	<ui:composition template="/template/padrao.xhtml">
+		<ui:define name="titulo">Início</ui:define>
+		
+		<ui:define name="conteudo">
+			<h:form id="formularioInicio">
+				<div style="display:grid">
+					<p:link value="AutoComplete" outcome="autocomplete"/>
+					<p:link value="Data" outcome="data"/>
+					<p:link value="Select One Menu" outcome="selectOneMenu"/>
+					<p:link value="Select One Menu (Cor)" outcome="select-one-menu/color"/>
+					
+					<p:separator/>
+					
+					<p:link value="Ajax" outcome="ajax_poll"/>
+					
+					<p:separator/>
+					
+					<p:link value="Datatable" outcome="datatable"/>
+					<p:link value="Datatable (Tabela - Kai)" outcome="datatable/table"/>
+					<p:link value="Virtual Scrolling" outcome="datatable/virtual-scrolling"/>
+					
+					<p:separator/>
+					
+					<p:link value="Media" outcome="media"/>
+					
+					<p:separator/>
+					
+					<p:link value="Dialog" outcome="dialog"/>
+					<p:link value="Dialog (load spinner)" outcome="dialog/load-spinner"/>
+					
+					<p:separator/>
+					
+					<p:link value="TabMenu" outcome="menu/tab-menu"/>
+					
+					<p:separator/>
+					
+					<p:link value="Schedule" outcome="schedule"/>
+					<p:link value="Timeline" outcome="timeline"/>
+				</div>
+			</h:form>
+		</ui:define>
+	</ui:composition>
 </html>

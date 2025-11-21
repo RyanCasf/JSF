@@ -6,39 +6,42 @@
 	xmlns:p="http://primefaces.org/ui">
 	
 	<h:head>
-		<title>Data</title>
 		<h:outputScript name="locale.js" />
 	</h:head>
 	
-	<h:body>
-		<h:form id="formularioData">
-			<p:growl id="informacao" showDetail="true" />
-			
-			<h:outputText value="Data:" style="font-weight:bold;display:block" id="texto_data" />
-			<p:calendar 
-				id="data" 
-				mask="true" 
-				locale="pt_BR" 
-				navigator="true" 
-				effect="fadeIn" 
-				pattern="dd/MM/yyyy" 
-				showButtonPanel="true" 
-				value="#{dataBean.data}">
+	<ui:composition template="/template/padrao.xhtml">
+		<ui:define name="titulo">Data</ui:define>
+		
+		<ui:define name="conteudo">
+			<h:form id="formularioData">
+				<p:growl id="informacao" showDetail="true" />
 				
-				<p:ajax event="dateSelect" listener="#{dataBean.selecionarData}" update=":formularioData:informacao" />
-				<p:ajax event="valueChange" listener="#{dataBean.selecionarData}" update=":formularioData:informacao" />
-			</p:calendar>
+				<h:outputText value="Data:" style="font-weight:bold;display:block" id="texto_data" />
+				<p:calendar 
+					id="data" 
+					mask="true" 
+					locale="pt_BR" 
+					navigator="true" 
+					effect="fadeIn" 
+					pattern="dd/MM/yyyy" 
+					showButtonPanel="true" 
+					value="#{dataBean.data}">
+					
+					<p:ajax event="dateSelect" listener="#{dataBean.selecionarData}" update=":formularioData:informacao" />
+					<p:ajax event="valueChange" listener="#{dataBean.selecionarData}" update=":formularioData:informacao" />
+				</p:calendar>
+					
+				<h:outputText id="dataTexto" value="#{dataBean.data}" style="font-weight:bold">
+					<f:convertDateTime locale="pt_BR" pattern="dd/MM/yyyy" />
+				</h:outputText>
 				
-			<h:outputText id="dataTexto" value="#{dataBean.data}" style="font-weight:bold">
-				<f:convertDateTime locale="pt_BR" pattern="dd/MM/yyyy" />
-			</h:outputText>
-			
-			<p:commandButton 
-				id="imprimir"
-				process="data" 
-				value="Imprimir" 
-				update="dataTexto" 
-				style="display:block" />
-		</h:form>
-	</h:body>
+				<p:commandButton 
+					id="imprimir"
+					process="data" 
+					value="Imprimir" 
+					update="dataTexto" 
+					style="display:block" />
+			</h:form>
+		</ui:define>
+	</ui:composition>
 </html>
