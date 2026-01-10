@@ -21,7 +21,8 @@ import org.mockito.MockedConstruction;
 import org.mockito.MockedConstruction.Context;
 import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.primefaces.context.RequestContext;
+import org.primefaces.PrimeFaces;
+import org.primefaces.PrimeFaces.Ajax;
 import org.primefaces.test.crud.retorno.RetornoNegocio;
 import org.primefaces.test.crud.retorno.RetornoNegocio.Resultado;
 import org.primefaces.test.crud.util.CadastrarManagerGenericoTeste;
@@ -48,14 +49,17 @@ class CadastrarManagerTeste implements CadastrarManagerGenericoTeste<CadastrarMa
 	@DisplayName("Carregar reprovado.")
 	void carregarReprovado(boolean visualizar) {
 		try (MockedConstruction<EntidadeNegocio> negocio = mockConstruction(EntidadeNegocio.class, this::prepararCarregarReprovado);
-				MockedStatic<RequestContext> requestContext = mockStatic(RequestContext.class);
+				MockedStatic<PrimeFaces> primefaces = mockStatic(PrimeFaces.class);
 				MockedStatic<FacesContext> facesContext = mockStatic(FacesContext.class);) {
 			
 			FacesContext facesContextMock = mock(FacesContext.class);
-			facesContext.when(() -> FacesContext.getCurrentInstance()).thenReturn(facesContextMock);
+			facesContext.when(FacesContext::getCurrentInstance).thenReturn(facesContextMock);
 			
-			RequestContext requestContextMock = mock(RequestContext.class);
-			requestContext.when(() -> RequestContext.getCurrentInstance()).thenReturn(requestContextMock);
+			PrimeFaces primefacesMock = mock(PrimeFaces.class);
+			primefaces.when(PrimeFaces::current).thenReturn(primefacesMock);
+			
+			Ajax ajaxMock = mock(Ajax.class);
+			when(primefacesMock.ajax()).thenReturn(ajaxMock);
 			
 			manager.carregar(0l, visualizar);
 			
@@ -76,10 +80,13 @@ class CadastrarManagerTeste implements CadastrarManagerGenericoTeste<CadastrarMa
 	@DisplayName("Carregar ceito.")
 	void carregarAceito(boolean visualizar) {
 		try (MockedConstruction<EntidadeNegocio> negocio = mockConstruction(EntidadeNegocio.class, this::prepararCarregarAceito);
-				MockedStatic<RequestContext> requestContext = mockStatic(RequestContext.class)) {
+				MockedStatic<PrimeFaces> primefaces = mockStatic(PrimeFaces.class)) {
 			
-			RequestContext requestContextMock = mock(RequestContext.class);
-			requestContext.when(() -> RequestContext.getCurrentInstance()).thenReturn(requestContextMock);
+			PrimeFaces primefacesMock = mock(PrimeFaces.class);
+			primefaces.when(PrimeFaces::current).thenReturn(primefacesMock);
+			
+			Ajax ajaxMock = mock(Ajax.class);
+			when(primefacesMock.ajax()).thenReturn(ajaxMock);
 			
 			manager.carregar(0l, visualizar);
 			

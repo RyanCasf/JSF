@@ -7,7 +7,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
-import org.primefaces.context.RequestContext;
+import org.primefaces.PrimeFaces;
 import org.primefaces.test.crud.retorno.RetornoNegocio;
 import org.primefaces.test.crud.retorno.RetornoNegocio.Resultado;
 import org.primefaces.test.crud.util.CadastrarManagerGenerico;
@@ -35,12 +35,12 @@ public class CadastrarManager implements Serializable, CadastrarManagerGenerico<
 	    
 	    RetornoNegocio retorno = negocio.carregar(chave);
 	    if (retorno.getResultado() == Resultado.ACEITO) {
-	    	RequestContext.getCurrentInstance().execute("dlgCadastrarEntidade.show()");
-	    	RequestContext.getCurrentInstance().update("formularioCadastrarEntidade");
+	    	PrimeFaces.current().executeScript("dlgCadastrarEntidade.show()");
+	    	PrimeFaces.current().ajax().update("formularioCadastrarEntidade");
 	    }
 	    else {
 	    	retorno.getMensagens().forEach(m -> FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Aviso", m)));
-	    	RequestContext.getCurrentInstance().update("formularioPesquisarEntidade:mensagem");
+	    	PrimeFaces.current().ajax().update("formularioPesquisarEntidade:mensagem");
 	    }
 	}
 }
