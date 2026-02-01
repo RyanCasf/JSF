@@ -4,7 +4,7 @@
     --color-red: #FF5555;
     --color-blue: #8BE9FD;
     --color-green: #50FA7B;
-    --color-black: #282A36;
+    --color-black: #1E1E26;
     --color-white: #F8F8F2;
     --color-yellow: #FFB86C;
     --color-black-hard: #1B1D2A;
@@ -18,8 +18,8 @@
 }
 
 body {
-    margin: 1rem;
-    height: 100%;
+	display: flex;
+	min-height: 100vh;
     font-size: 1rem;
     line-height: 2rem;
     color: var(--color-white);

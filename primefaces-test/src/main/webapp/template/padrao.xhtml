@@ -8,11 +8,35 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 		
 		<h:outputScript name="locale.js"/>
+		<h:outputStylesheet name="css/inicio/menu.css"/>
 		<h:outputStylesheet name="css/tema/dracula.css"/>
 	</h:head>
 	
 	<h:body>
-		<h1><ui:insert name="titulo"></ui:insert></h1>
-		<ui:insert name="conteudo"></ui:insert>
+		<aside class="sidebar">
+			<h1 class="brand"><ui:insert name="titulo"></ui:insert></h1>
+            <ul class="nav-links">
+            	<ui:repeat
+            		var="l"
+            		value="#{inicioBean.links}">
+            		
+            		<ui:fragment rendered="#{l.group eq 'SEPARATOR'}">
+            			<hr/>
+            		</ui:fragment>
+            		
+                	<p:link
+                		title="#{l.value}"
+                		outcome="#{l.outcome}"
+                		rendered="#{l.group ne 'SEPARATOR'}">
+                		
+                		<li>#{l.value}</li>
+                	</p:link>
+            	</ui:repeat>
+            </ul>
+        </aside>
+        
+        <main class="content">
+			<ui:insert name="conteudo"></ui:insert>
+		</main>
 	</h:body>
 </html>
