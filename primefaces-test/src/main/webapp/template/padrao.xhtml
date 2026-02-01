@@ -8,13 +8,14 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 		
 		<h:outputScript name="locale.js"/>
+		<h:outputScript name="js/inicio/menu.js"/>
 		<h:outputStylesheet name="css/inicio/menu.css"/>
 		<h:outputStylesheet name="css/tema/dracula.css"/>
 	</h:head>
 	
 	<h:body>
 		<aside class="sidebar">
-			<h1 class="brand"><ui:insert name="titulo"></ui:insert></h1>
+			<h1 class="brand">PrimeFaces</h1>
             <ul class="nav-links">
             	<ui:repeat
             		var="l"
@@ -27,7 +28,8 @@
                 	<p:link
                 		title="#{l.value}"
                 		outcome="#{l.outcome}"
-                		rendered="#{l.group ne 'SEPARATOR'}">
+                		rendered="#{l.group ne 'SEPARATOR'}"
+                		styleClass="#{inicioBean.styleClass(l.outcome)}">
                 		
                 		<li>#{l.value}</li>
                 	</p:link>
@@ -36,6 +38,7 @@
         </aside>
         
         <main class="content">
+        	<h1><ui:insert name="titulo"></ui:insert></h1>
 			<ui:insert name="conteudo"></ui:insert>
 		</main>
 	</h:body>

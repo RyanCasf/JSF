@@ -45,16 +45,17 @@
 }
 
 .nav-links li {
-	padding: 10px;
+	margin: 2px;
+	padding: 8px;
 	cursor: pointer;
 	font-size: 0.9rem;
 	color: var(--text-dim);
 }
 
-.nav-links li.active, .nav-links li:hover {
+.nav-links li:hover, .active li {
 	color: #FFF;
 	border-radius: 4px;
-	background: #32323D;
+	background: var(--border);
 }
 
 hr {
