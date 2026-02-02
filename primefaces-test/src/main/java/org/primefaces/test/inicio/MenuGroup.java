@@ -4,6 +4,7 @@ public enum MenuGroup {
 	
 	AJAX,
 	FORM,
+	MISC,
 	MENU,
 	DIALOG,
 	SCHEDULE,

@@ -2,12 +2,15 @@
 
 :root {
     --color-red: #FF5555;
-    --color-blue: #8BE9FD;
+    --color-blue: #40DBFC;
     --color-green: #50FA7B;
     --color-black: #1E1E26;
     --color-white: #F8F8F2;
     --color-yellow: #FFB86C;
+    --color-blue-hard: #393D59;
     --color-black-hard: #1B1D2A;
+    
+    --border: #32323D;
 }
 
 * {
@@ -24,6 +27,22 @@ body {
     line-height: 2rem;
     color: var(--color-white);
     background-color: var(--color-black);
+}
+
+.ui-panel-titlebar.ui-widget-header {
+	background: none;
+	color: var(--color-white);
+	border: 1px solid var(--border);
+	background-color: var(--color-blue-hard);
+}
+
+.ui-widget.ui-panel {
+	border: 1px solid var(--border);
+	background-color: var(--color-black);
+}
+
+.ui-widget.ui-panel label, .ui-widget.ui-panel span {
+	color: var(--color-white);
 }
 
 h1 {
@@ -49,16 +68,25 @@ a {
 	color: var(--color-white);
 }
 
-button {
-    cursor: pointer;
-    padding: 10px 20px;
-    border-radius: 5px;
-    color: var(--color-black);
-    background-color: var(--color-blue);
-    transition: background-color 0.3s, color 0.3s;
+.botao {
+	all: unset !important;
+    cursor: pointer !important;
+	background: none !important;
+	padding: 8px 16px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    border-radius: 5px !important;
+    justify-content: center !important;
+    color: var(--color-white) !important;
+    background-color: var(--color-blue) !important;
+    transition: background-color 0.3s ease, color 0.3s ease !important;
 }
 
-button:hover {
-    color: var(--color-white);
-    background-color: var(--color-green);
+.botao:hover {
+    background-color: var(--color-green) !important;
+}
+
+.botao:focus-visible {
+	outline-offset: 2px !important;
+	outline: 2px solid var(--color-white) !important;
 }

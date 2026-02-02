@@ -32,7 +32,9 @@ public class LinkDAO {
 				LinkDTO.builder().group(SEPARATOR).build(),
 				LinkDTO.builder().group(SCHEDULE).value("Schedule").outcome("/schedule").build(),
 				LinkDTO.builder().group(SEPARATOR).build(),
-				LinkDTO.builder().group(TIMELINE).value("Timeline").outcome("/timeline").build()
+				LinkDTO.builder().group(TIMELINE).value("Timeline").outcome("/timeline").build(),
+				LinkDTO.builder().group(SEPARATOR).build(),
+				LinkDTO.builder().group(MISC).value("DefaultCommand").outcome("/defaultcommand/scope").build()
 		));
 	}
 }
