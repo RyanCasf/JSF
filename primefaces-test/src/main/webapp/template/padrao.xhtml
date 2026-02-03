@@ -9,8 +9,11 @@
 		
 		<h:outputScript name="locale.js"/>
 		<h:outputScript name="js/inicio/menu.js"/>
+		<h:outputScript name="js/componente/dlg.js" target="body"/>
+		
 		<h:outputStylesheet name="css/inicio/menu.css"/>
 		<h:outputStylesheet name="css/tema/dracula.css"/>
+		<h:outputStylesheet name="css/componente/dlg.css"/>
 	</h:head>
 	
 	<h:body>
@@ -41,5 +44,9 @@
         	<h1><ui:insert name="titulo"></ui:insert></h1>
 			<ui:insert name="conteudo"></ui:insert>
 		</main>
+		
+		<div id="dlg" class="spinner-container hidden">
+			<div class="spinner"></div>
+		</div>
 	</h:body>
 </html>

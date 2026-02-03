@@ -13,42 +13,6 @@
 				body {
 		            height: 200vh;
 		        }
-		        
-				.spinner-container {
-		            top: 0;
-		            left: 0;
-		            width: 100%;
-		            height: 100%;
-		            display: flex;
-		            z-index: 1000;
-		            position: fixed;
-		            align-items: center;
-		            justify-content: center;
-		            background-color: rgba(0, 0, 0, 0.5);
-		        }
-		        
-		        .spinner {
-		            width: 60px;
-		            height: 60px;
-		            border-radius: 50%;
-		            border: 6px solid #f3f3f3;
-		            border-top: 6px solid #4f64ba;
-		            animation: spin 1.2s linear infinite;
-		        }
-		
-		        .hidden {
-		            display: none;
-		        }
-		
-		        @keyframes spin {
-		            0% {
-		                transform: rotate(0deg);
-		            }
-		
-		            100% {
-		                transform: rotate(360deg);
-		            }
-		        }
 		    </style>
 		    
 			<h:form id="formulario">
@@ -56,46 +20,30 @@
 					value="Dialog" 
 					process="@this" 
 					style="display:block"
+					oncomplete="dlg.hide()"
 					onclick="dlg.show()" />
 					
 				<p:commandButton 
 					value="Dialog" 
 					process="@this" 
+					oncomplete="dlg.hide()"
 					style="display:block;margin-top:400px"
 					onclick="dlg.show()" />
 					
 				<p:commandButton 
 					value="Dialog" 
 					process="@this" 
+					oncomplete="dlg.hide()"
 					style="display:block;margin-top:400px"
 					onclick="dlg.show()" />
 					
 				<p:commandButton 
 					value="Dialog" 
 					process="@this" 
+					oncomplete="dlg.hide()"
 					style="display:block;margin-top:400px"
 					onclick="dlg.show()" />
 			</h:form>
-			
-			<div id="dlg" class="spinner-container hidden">
-				<div class="spinner"></div>
-			</div>
-			
-			<script>
-				const dlg = document.getElementById('dlg');
-				
-				dlg.show = function() {
-					this.classList.remove('hidden');
-					
-					setTimeout(() => {
-						this.hide();
-					}, 3000);
-				};
-				
-				dlg.hide = function() {
-					this.classList.add('hidden');
-				};
-			</script>
 		</ui:define>
 	</ui:composition>
 </html>
