@@ -9,14 +9,25 @@
 		<ui:define name="titulo">Dialog</ui:define>
 		
 		<ui:define name="conteudo">
+			<style>
+				form {
+					gap: 10px;
+				    display: grid;
+				    align-content: center;
+				    justify-content: start;
+				}
+			</style>
+			
 			<h:form>
 				<p:commandButton 
 					process="@this" 
+					styleClass="botao" 
 					value="Abrir dialog (Foco)" 
 					onclick="PF('dlgDialog').show()" />
 					
 				<p:commandButton 
 					process="@this" 
+					styleClass="botao" 
 					value="Abrir dialog (Campo vazio)" 
 					onclick="PF('dlgDialogCampoVazio').show()" />
 			</h:form>

@@ -12,31 +12,41 @@
 			<h:form id="formularioData">
 				<p:growl id="informacao" showDetail="true" />
 				
-				<h:outputText value="Data:" style="font-weight:bold;display:block" id="texto_data" />
-				<p:calendar 
-					id="data" 
-					mask="true" 
-					locale="pt_BR" 
-					navigator="true" 
-					effect="fadeIn" 
-					pattern="dd/MM/yyyy" 
-					showButtonPanel="true" 
-					value="#{dataBean.data}">
+				<p:panelGrid
+					columns="1"
+					layout="grid"
+					styleClass="ui-panelgrid-blank">
 					
-					<p:ajax event="dateSelect" listener="#{dataBean.selecionarData}" update=":formularioData:informacao" />
-					<p:ajax event="valueChange" listener="#{dataBean.selecionarData}" update=":formularioData:informacao" />
-				</p:calendar>
+					<h:panelGroup>
+						<h:outputText value="Data:" style="display:block" id="texto_data" />
+						<p:calendar 
+							id="data" 
+							mask="true" 
+							locale="pt_BR" 
+							navigator="true" 
+							effect="fadeIn" 
+							pattern="dd/MM/yyyy" 
+							showButtonPanel="true" 
+							value="#{dataBean.data}">
+							
+							<p:ajax event="dateSelect" listener="#{dataBean.selecionarData}" update=":formularioData:informacao" />
+							<p:ajax event="valueChange" listener="#{dataBean.selecionarData}" update=":formularioData:informacao" />
+						</p:calendar>
+						
+						<h:outputText id="dataTexto" value="#{dataBean.data}">
+							<f:convertDateTime locale="pt_BR" pattern="dd/MM/yyyy"/>
+						</h:outputText>
+					</h:panelGroup>
 					
-				<h:outputText id="dataTexto" value="#{dataBean.data}" style="font-weight:bold">
-					<f:convertDateTime locale="pt_BR" pattern="dd/MM/yyyy" />
-				</h:outputText>
+					<p:commandButton 
+						id="imprimir"
+						process="data" 
+						value="Imprimir" 
+						styleClass="botao"
+						update="dataTexto" />
+					
+				</p:panelGrid>
 				
-				<p:commandButton 
-					id="imprimir"
-					process="data" 
-					value="Imprimir" 
-					update="dataTexto" 
-					style="display:block" />
 			</h:form>
 		</ui:define>
 	</ui:composition>

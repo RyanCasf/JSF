@@ -13,35 +13,40 @@
 				body {
 		            height: 200vh;
 		        }
+		        
+		        #formulario .botao {
+		        	display: block !important;
+		        	margin-top: 400px !important;
+		        }
 		    </style>
 		    
 			<h:form id="formulario">
 				<p:commandButton 
 					value="Dialog" 
 					process="@this" 
-					style="display:block"
+					styleClass="botao"
 					oncomplete="dlg.hide()"
 					onclick="dlg.show()" />
 					
 				<p:commandButton 
 					value="Dialog" 
 					process="@this" 
+					styleClass="botao"
 					oncomplete="dlg.hide()"
-					style="display:block;margin-top:400px"
 					onclick="dlg.show()" />
 					
 				<p:commandButton 
 					value="Dialog" 
 					process="@this" 
+					styleClass="botao"
 					oncomplete="dlg.hide()"
-					style="display:block;margin-top:400px"
 					onclick="dlg.show()" />
 					
 				<p:commandButton 
 					value="Dialog" 
 					process="@this" 
+					styleClass="botao"
 					oncomplete="dlg.hide()"
-					style="display:block;margin-top:400px"
 					onclick="dlg.show()" />
 			</h:form>
 		</ui:define>
