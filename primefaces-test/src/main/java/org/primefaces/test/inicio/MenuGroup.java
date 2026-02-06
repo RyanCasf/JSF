@@ -7,6 +7,7 @@ public enum MenuGroup {
 	MISC,
 	MENU,
 	DIALOG,
+	BUTTON,
 	SCHEDULE,
 	TIMELINE,
 	SEPARATOR,

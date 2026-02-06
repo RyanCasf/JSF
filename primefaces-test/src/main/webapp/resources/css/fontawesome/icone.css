@@ -1,0 +1,11 @@
+.ui-menuitem-icon.fa {
+	margin-right: 8px !important;
+}
+
+.fa-trash {
+	color: var(--color-red);
+}
+
+.fa-refresh {
+	color: var(--color-blue);
+}
