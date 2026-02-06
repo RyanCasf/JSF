@@ -9,8 +9,19 @@
 		<ui:define name="titulo">Início</ui:define>
 		
 		<ui:define name="conteudo">
+			<style>
+				.welcome-banner {
+					padding: 30px;
+					border-radius: 12px;
+					border: 1px solid var(--border);
+					background: linear-gradient(135deg, #2a2a35 0%, #1a1a22 100%);
+				}
+			</style>
 			<h:form id="formularioInicio">
-				
+				<div class="welcome-banner">
+					<h2>Bem-vindo!</h2>
+					<p>Explore os componentes de UI disponíveis no painel.</p>
+				</div>
 			</h:form>
 		</ui:define>
 	</ui:composition>
