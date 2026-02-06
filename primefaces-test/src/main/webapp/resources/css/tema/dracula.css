@@ -41,7 +41,7 @@ body {
 	background-color: var(--color-black);
 }
 
-.ui-widget.ui-panel label, .ui-widget.ui-panel span {
+.ui-widget.ui-panel label, .ui-widget.ui-panel span, .ui-g span {
 	color: var(--color-white);
 }
 
