@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<ui:composition template="/template/padrao.xhtml">
+		<ui:define name="titulo">CommandButton - Icon</ui:define>
+		
+		<ui:define name="conteudo">
+			<h:form id="formCommandButtonIcon">
+				<p:commandButton
+					value="Left"
+					icon="fa fa-check"
+					actionListener="#{commandButtonIconBean.run}"
+					onclick="this.disabled = true; jQuery(this).find('.ui-icon').removeClass('fa-check').addClass('fa-spinner fa-spin')"
+					oncomplete="this.disabled = false; jQuery(this).find('.ui-icon').removeClass('fa-spinner fa-spin').addClass('fa-check')"/>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</html>

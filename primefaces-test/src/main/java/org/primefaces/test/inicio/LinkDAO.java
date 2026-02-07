@@ -36,6 +36,7 @@ public class LinkDAO {
 				LinkDTO.builder().group(SEPARATOR).build(),
 				LinkDTO.builder().group(MISC).value("DefaultCommand").outcome("/defaultcommand/scope").build(),
 				LinkDTO.builder().group(SEPARATOR).build(),
+				LinkDTO.builder().group(MISC).value("CommandButton").outcome("/commandbutton/icon-animation").build(),
 				LinkDTO.builder().group(BUTTON).value("SplitButton").outcome("/splitbutton/menuitem").build()
 		));
 	}
