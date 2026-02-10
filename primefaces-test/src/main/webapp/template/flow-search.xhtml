@@ -89,7 +89,7 @@
 		</style>
 		
 		<div class="overlay" id="launcherOverlay">
-			<div class="launcher">
+			<div class="launcher" id="launcherDiv">
 				<div class="search-container">
 					<input type="text" id="searchBox" placeholder="Buscar..." autocomplete="off"></input>
 				</div>
@@ -98,15 +98,20 @@
 			</div>
 		</div>
 		
-		<script>
+		<script type="text/javascript">
+		//<![CDATA[
 			const overlay = document.getElementById('launcherOverlay');
+			const launcher = document.getElementById('launcherDiv');
 			const searchBox = document.getElementById('searchBox');
 			const results = document.getElementById('results');
 			const apps = #{inicioBean.dados};
+			let currentIndex = -1;
 			
 			function openLauncher() {
 				overlay.style.display = 'flex';
 				searchBox.focus();
+				currentIndex = -1;
+				
 				populateResults(apps);
 			}
 			
@@ -127,9 +132,28 @@
 				}
 			});
 			
+			function updateSelection() {
+				document.querySelectorAll('.result-item').forEach((item, index) => {
+					item.classList.remove('active');
+					
+					if (index === currentIndex) {
+						item.classList.add('active');
+						item.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+					}
+				});
+			}
+			
+			function selectItem() {
+				const items = document.querySelectorAll('.result-item:not(.no-results)');
+				if (currentIndex >= 0 && items[currentIndex]) {
+					items[currentIndex].click();
+				}
+			}
+			
 			searchBox.addEventListener('input', (e) => {
 				const val = e.target.value.toLowerCase();
 				results.innerHTML = '';
+				currentIndex = -1;
 				
 				if (!val) {
 					populateResults(apps);
@@ -151,13 +175,14 @@
 					return;
 				}
 				
-				filteredApps.forEach(app => {
+				filteredApps.forEach((app, index) => {
 					const link = document.createElement('a');
 					link.href = app.desc;
 					link.title = app.name;
 					
 					const div = document.createElement("div");
 					div.className = 'result-item';
+					div.dataset.index = index;
 					
 					const strong = document.createElement('strong');
 					strong.textContent = app.name;
@@ -174,6 +199,27 @@
 					results.appendChild(link);
 				});
 			}
+			
+			launcher.addEventListener('keydown', (e) => {
+				const items = document.querySelectorAll('.result-item:not(.no-results)');
+				const totalItems = items.length;
+				
+				if (e.code === 'ArrowDown') {
+					e.preventDefault();
+					currentIndex = Math.min(currentIndex + 1, totalItems - 1);
+					updateSelection();
+				}
+				else if (e.code === 'ArrowUp') {
+					e.preventDefault();
+					currentIndex = Math.max(currentIndex - 1, -1);
+					updateSelection();
+				}
+				else if (e.code === 'Enter' && currentIndex >= 0) {
+					e.preventDefault();
+					selectItem();
+				}
+			});
+		//]]>
 		</script>
 	</ui:composition>
 </html>
