@@ -15,6 +15,78 @@
 		<h:outputStylesheet name="css/tema/dracula.css"/>
 		<h:outputStylesheet name="css/componente/dlg.css"/>
 		<h:outputStylesheet name="css/fontawesome/icone.css"/>
+		
+		<style>
+			:root {
+				--bg-color: #282c34;
+				--text-color: #ffffff;
+				--surface-color: #353b45;
+			}
+			
+			.overlay {
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				display: none;
+				z-index: 1000;
+				position: fixed;
+				padding-top: 100px;
+				justify-content: center;
+				background: rgba(0, 0, 0, 0.75);
+			}
+			
+			.launcher {
+				width: 80%;
+				overflow: hidden;
+				height: fit-content;
+				border-radius: 12px;
+				background: var(--bg-color);
+				border: 1px solid #4b5263;
+				animation: slideIn 0.2s ease-out;
+				box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+			}
+			
+			@keyframes slideIn {
+				to { transform: translateY(0); opacity: 1; }
+				from { transform: translateY(-20px); opacity: 0; }
+			}
+			
+			.search-container {
+				padding: 20px;
+			}
+			
+			input {
+				width: 100%;
+				border: none;
+				outline: none;
+				font-size: 22px;
+				background: transparent;
+				color: var(--text-color);
+			}
+			
+			#results {
+				overflow-y: auto;
+				max-height: 300px;
+				border-top: 1px solid #4b5263;
+			}
+			
+			.result-item {
+				cursor: pointer;
+				padding: 15px 20px;
+				color: var(--text-color);
+			}
+			
+			.result-item:hover, .result-item.active {
+				background: var(--surface-color);
+			}
+			
+			.item-sub {
+				display: block;
+				font-size: 12px;
+				color: #abb2bf;
+			}
+		</style>
 	</h:head>
 	
 	<h:body>
@@ -49,5 +121,76 @@
 		<div id="dlg" class="spinner-container hidden">
 			<div class="spinner"></div>
 		</div>
+		
+		<div class="overlay" id="launcherOverlay">
+			<div class="launcher">
+				<div class="search-container">
+					<input type="text" id="searchBox" placeholder="O que você deseja fazer?" autocomplete="off"></input>
+				</div>
+				
+				<div id="results"></div>
+			</div>
+		</div>
+		
+		<script>
+			const overlay = document.getElementById('launcherOverlay');
+			const searchBox = document.getElementById('searchBox');
+			const results = document.getElementById('results');
+			const apps = #{inicioBean.dados};
+			
+			function openLauncher() {
+				overlay.style.display = 'flex';
+				searchBox.focus();
+			}
+			
+			function closeLauncher() {
+				overlay.style.display = 'none';
+				searchBox.value = '';
+				results.innerHTML = '';
+			}
+			
+			overlay.addEventListener('click', (e) => {
+				if(e.target === overlay) closeLauncher();
+			});
+			
+			window.addEventListener('keydown', (e) => {
+				if (e.code === 'Escape') {
+					e.preventDefault();
+					overlay.style.display === 'flex' ? closeLauncher() : openLauncher();
+				}
+			});
+			
+			searchBox.addEventListener('input', (e) => {
+				const val = e.target.value.toLowerCase();
+				results.innerHTML = '';
+				
+				if (!val) {
+					return;
+				}
+				
+				apps.filter(a => a.name.toLowerCase().includes(val)).forEach(app => {
+					const link = document.createElement('a');
+					link.href = app.desc;
+					link.title = app.name;
+					
+					const div = document.createElement("div");
+					div.className = 'result-item';
+					
+					const strong = document.createElement('strong');
+					strong.textContent = app.name;
+					
+					const span = document.createElement('span');
+					span.className = 'item-sub';
+					span.textContent = app.desc;
+					
+					div.appendChild(strong);
+					div.appendChild(span);
+					link.appendChild(div);
+					
+					div.onclick = () => { closeLauncher(); };
+					results.appendChild(link);
+				});
+			});
+		</script>
 	</h:body>
 </html>
