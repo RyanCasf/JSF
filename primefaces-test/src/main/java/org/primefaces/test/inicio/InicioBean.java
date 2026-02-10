@@ -26,6 +26,7 @@ public class InicioBean implements Serializable {
 	
 	public String getDados() {
 		String conjunto = links.stream()
+				.filter(link -> link.getGroup() != null && link.getGroup() != MenuGroup.SEPARATOR)
 				.map(link -> {
 					String href = "/primefaces-test" + link.getOutcome() + ".jsf";
 					return String.format("{ name: \"%s\", desc: \"%s\" }", link.getValue(), href);

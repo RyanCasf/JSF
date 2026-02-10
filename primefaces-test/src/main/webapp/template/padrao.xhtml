@@ -66,6 +66,7 @@
 			}
 			
 			#results {
+				padding: 10px;
 				overflow-y: auto;
 				max-height: 300px;
 				border-top: 1px solid #4b5263;
@@ -74,6 +75,7 @@
 			.result-item {
 				cursor: pointer;
 				padding: 15px 20px;
+				border-radius: 10px;
 				color: var(--text-color);
 			}
 			
@@ -85,6 +87,13 @@
 				display: block;
 				font-size: 12px;
 				color: #abb2bf;
+			}
+			
+			.no-results {
+				color: #999;
+				padding: 20px;
+				font-style: italic;
+				text-align: center;
 			}
 		</style>
 	</h:head>
@@ -125,7 +134,7 @@
 		<div class="overlay" id="launcherOverlay">
 			<div class="launcher">
 				<div class="search-container">
-					<input type="text" id="searchBox" placeholder="O que você deseja fazer?" autocomplete="off"></input>
+					<input type="text" id="searchBox" placeholder="Buscar..." autocomplete="off"></input>
 				</div>
 				
 				<div id="results"></div>
@@ -141,6 +150,7 @@
 			function openLauncher() {
 				overlay.style.display = 'flex';
 				searchBox.focus();
+				populateResults(apps);
 			}
 			
 			function closeLauncher() {
@@ -165,10 +175,26 @@
 				results.innerHTML = '';
 				
 				if (!val) {
+					populateResults(apps);
 					return;
 				}
 				
-				apps.filter(a => a.name.toLowerCase().includes(val)).forEach(app => {
+				const filtered = apps.filter(a => a.name.toLowerCase().includes(val));
+				populateResults(filtered);
+			});
+			
+			function populateResults(filteredApps) {
+				results.innerHTML = '';
+				
+				if (filteredApps.length === 0) {
+					const div = document.createElement("div");
+					div.className = 'result-item no-results';
+					div.textContent = 'Nenhum resultado encontrado';
+					results.appendChild(div);
+					return;
+				}
+				
+				filteredApps.forEach(app => {
 					const link = document.createElement('a');
 					link.href = app.desc;
 					link.title = app.name;
@@ -190,7 +216,7 @@
 					div.onclick = () => { closeLauncher(); };
 					results.appendChild(link);
 				});
-			});
+			}
 		</script>
 	</h:body>
 </html>
