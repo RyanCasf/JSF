@@ -2,6 +2,7 @@ package org.primefaces.test.inicio;
 
 public enum MenuGroup {
 	
+	FILE,
 	AJAX,
 	FORM,
 	MISC,
