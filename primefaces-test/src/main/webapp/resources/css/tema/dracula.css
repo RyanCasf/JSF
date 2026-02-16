@@ -69,7 +69,11 @@ a {
 }
 
 .botao {
-	all: unset !important;
+	margin: 0 !important;
+    border: none !important;
+    outline: none !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
     cursor: pointer !important;
 	background: none !important;
 	padding: 8px 16px !important;
