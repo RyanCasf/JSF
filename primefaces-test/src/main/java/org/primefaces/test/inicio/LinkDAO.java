@@ -15,6 +15,7 @@ public class LinkDAO {
 				LinkDTO.builder().group(FORM).value("Select One Menu").outcome("/selectOneMenu").build(),
 				LinkDTO.builder().group(FORM).value("Select One Menu (Lazy)").outcome("/select-one-menu/lazy").build(),
 				LinkDTO.builder().group(FORM).value("Select One Menu (Cor)").outcome("/select-one-menu/color").build(),
+				LinkDTO.builder().group(FORM).value("Text Editor").outcome("/text-editor/toolbar").build(),
 				LinkDTO.builder().group(SEPARATOR).build(),
 				LinkDTO.builder().group(AJAX).value("Ajax").outcome("/ajax_poll").build(),
 				LinkDTO.builder().group(SEPARATOR).build(),
