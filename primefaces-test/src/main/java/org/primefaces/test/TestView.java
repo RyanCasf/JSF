@@ -2,8 +2,6 @@ package org.primefaces.test;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.util.Date;
 
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
@@ -12,7 +10,6 @@ import org.primefaces.event.timeline.TimelineAddEvent;
 import org.primefaces.event.timeline.TimelineModificationEvent;
 import org.primefaces.model.timeline.TimelineEvent;
 import org.primefaces.model.timeline.TimelineModel;
-import org.primefaces.util.CalendarioUtil;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -24,8 +21,8 @@ import lombok.Setter;
 public class TestView implements Serializable {
 	
 	private TimelineModel timeline;
-	private Date start = CalendarioUtil.dataOntem();
-	private Date end = CalendarioUtil.dataAmanha();
+	private LocalDateTime start = LocalDateTime.now().minusDays(1L);
+	private LocalDateTime end = LocalDateTime.now().plusDays(1L);
 	
 	public TestView() {
 		String[] names = new String[] { "User 1", "User 2", "User 3", "User 4", "User 5", "User 6" };
@@ -43,8 +40,8 @@ public class TestView implements Serializable {
 
 				TimelineEvent event = new TimelineEvent();
 				event.setData(availability);
-				event.setStartDate(Date.from(startDate.atZone(ZoneId.systemDefault()).toInstant()));
-				event.setEndDate(Date.from(endDate.atZone(ZoneId.systemDefault()).toInstant()));
+				event.setStartDate(startDate);
+				event.setEndDate(endDate);
 				event.setEditable(true);
 				event.setGroup(name);
 				event.setStyleClass(availability.toLowerCase());

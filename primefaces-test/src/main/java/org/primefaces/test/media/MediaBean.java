@@ -16,6 +16,10 @@ public class MediaBean implements Serializable {
 	
 	public StreamedContent getArquivo() {
 		InputStream inputStream = FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream("/resources/pdf/guide.pdf");
-		return new DefaultStreamedContent(inputStream, "application/pdf", "guide.pdf");
+		return DefaultStreamedContent.builder()
+				.stream(() -> inputStream)
+				.name("guide.pdf")
+				.contentType("application/pdf")
+				.build();
 	}
 }

@@ -21,7 +21,7 @@
         <dependency>
             <groupId>org.primefaces</groupId>
             <artifactId>primefaces</artifactId>
-            <version>7.0</version>
+            <version>10.0.0</version>
         </dependency>
 
         <!-- javax.* APIs -->
@@ -137,6 +137,14 @@
 		    <artifactId>playwright</artifactId>
 		    <version>1.49.0</version>
 		    <scope>test</scope>
+		</dependency>
+		
+		<dependency>
+		    <groupId>com.newrelic.agent.java</groupId>
+		    <artifactId>newrelic-java</artifactId>
+		    <version>9.1.0</version>
+		    <scope>provided</scope>
+		    <type>zip</type>
 		</dependency>
 		
     </dependencies>

@@ -2,7 +2,7 @@ package org.primefaces.test.schedule;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
@@ -11,7 +11,6 @@ import org.primefaces.model.DefaultScheduleEvent;
 import org.primefaces.model.LazyScheduleModel;
 import org.primefaces.model.ScheduleModel;
 import org.primefaces.model.timeline.TimelineModel;
-import org.primefaces.util.CalendarioUtil;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -30,19 +29,25 @@ public class ScheduleBean implements Serializable {
 		schedule = new LazyScheduleModel() {
 			
 			@Override
-			public void loadEvents(Date inicio, Date fim) {
-				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			public void loadEvents(LocalDateTime start, LocalDateTime end) {
+				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 				
-				System.out.println("Início: " + sdf.format(inicio));
-				System.out.println("Fim: " + sdf.format(fim));
+				System.out.println("Início: " + sdf.format(start));
+				System.out.println("Fim: " + sdf.format(end));
 				
-				DefaultScheduleEvent item0 = new DefaultScheduleEvent("0", new Date(), CalendarioUtil.dataAmanha());
-				item0.setDescription("Item 0");
-				addEvent(item0);
+				addEvent(DefaultScheduleEvent.builder()
+						.id("0")
+						.startDate(LocalDateTime.now())
+						.endDate(LocalDateTime.now().plusDays(1L))
+						.description("Item 0")
+						.build());
 				
-				DefaultScheduleEvent item1 = new DefaultScheduleEvent("1", CalendarioUtil.dataOntem(), CalendarioUtil.dataAmanha());
-				item1.setDescription("Item 1");
-				addEvent(item1);
+				addEvent(DefaultScheduleEvent.builder()
+						.id("1")
+						.startDate(LocalDateTime.now().minusDays(1L))
+						.endDate(LocalDateTime.now().plusDays(1L))
+						.description("Item 0")
+						.build());
 			}
 		};
 	}
