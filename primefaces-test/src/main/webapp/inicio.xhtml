@@ -22,6 +22,26 @@
 					<h2>Bem-vindo!</h2>
 					<p>Explore os componentes de UI disponíveis no painel.</p>
 				</div>
+				
+				<p:separator/>
+				
+				<h:panelGroup>
+					<h:outputText value="Tema:"/>
+					<p:selectOneMenu
+						style="width:100%"
+						value="#{inicioBean.tema}">
+						
+						<f:selectItems value="#{inicioBean.temas}"/>
+						
+						<p:ajax
+							update="@all"
+							event="change"
+							process="@this"
+							onstart="dlg.show()"
+							oncomplete="dlg.hide()"
+							listener="#{inicioBean.selecionarTema}"/>
+					</p:selectOneMenu>
+				</h:panelGroup>
 			</h:form>
 		</ui:define>
 	</ui:composition>
