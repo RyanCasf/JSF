@@ -24,6 +24,8 @@ public class LinkDAO {
 				LinkDTO.builder().group(DATA_TABLE).value("Virtual Scrolling").outcome("/datatable/virtual-scrolling").build(),
 				LinkDTO.builder().group(DATA_TABLE).value("DataScroller").outcome("/datascroller/scrolling").build(),
 				LinkDTO.builder().group(SEPARATOR).build(),
+				LinkDTO.builder().group(DIAGRAM).value("Diagram StateMachine").outcome("/diagram/state-machine").build(),
+				LinkDTO.builder().group(SEPARATOR).build(),
 				LinkDTO.builder().group(MULTIMEDIA).value("Media").outcome("/media").build(),
 				LinkDTO.builder().group(SEPARATOR).build(),
 				LinkDTO.builder().group(DIALOG).value("Dialog").outcome("/dialog").build(),
