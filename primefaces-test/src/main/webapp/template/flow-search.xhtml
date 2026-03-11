@@ -98,6 +98,7 @@
 			</div>
 		</div>
 		
+		<script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
 		<script type="text/javascript">
 		//<![CDATA[
 			const overlay = document.getElementById('launcherOverlay');
@@ -160,7 +161,13 @@
 					return;
 				}
 				
-				const filtered = apps.filter(a => a.name.toLowerCase().includes(val));
+				const options = {
+					keys: ['name'],
+					threshold: 0.3,
+				};
+				
+				const fuse = new Fuse(apps, options);
+				const filtered = fuse.search(val).map(result => result.item);
 				populateResults(filtered);
 			});
 			
