@@ -16,6 +16,10 @@ public class FileDownloadBean implements Serializable {
 	
     public StreamedContent getFile() {
     	InputStream inputStream = FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream("/resources/pdf/guide.pdf");
-		return new DefaultStreamedContent(inputStream, "application/pdf", "guide.pdf");
+		return DefaultStreamedContent.builder()
+				.stream(() -> inputStream)
+				.contentType("application/pdf")
+				.name("guide.pdf")
+				.build();
     }
 }
