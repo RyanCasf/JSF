@@ -11,10 +11,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ArgumentsSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
-import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.primefaces.event.SelectEvent;
+import org.primefaces.test.dados.SelectEventInvalido;
 import org.primefaces.test.util.ParameterizedNameDefaultTest;
 
 @DisplayName("AutoComplete Bean")
@@ -54,7 +55,7 @@ class AutoCompleteBeanTeste {
 	class ItemSelect {
 		
 		@ParameterizedTest(name = "Evento nulo.")
-		@NullSource
+		@ArgumentsSource(SelectEventInvalido.class)
 		@DisplayName("Sem evento.")
 		void semEvento(SelectEvent	evento) {
 			assertDoesNotThrow(() -> bean.itemSelect(evento));
