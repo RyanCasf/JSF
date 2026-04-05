@@ -42,7 +42,9 @@ public class LinkDAO {
 				LinkDTO.builder().group(BUTTON).value("CommandButton").outcome("/commandbutton/icon-animation").build(),
 				LinkDTO.builder().group(BUTTON).value("SplitButton").outcome("/splitbutton/menuitem").build(),
 				LinkDTO.builder().group(SEPARATOR).build(),
-				LinkDTO.builder().group(FILE).value("FileDownload").outcome("/filedownload/builder").build()
+				LinkDTO.builder().group(FILE).value("FileDownload").outcome("/filedownload/builder").build(),
+				LinkDTO.builder().group(SEPARATOR).build(),
+				LinkDTO.builder().group(LAYOUT).value("Chat").outcome("/layout/chat").build()
 		));
 	}
 }

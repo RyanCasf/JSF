@@ -14,5 +14,7 @@ public enum MenuGroup {
 	TIMELINE,
 	SEPARATOR,
 	DATA_TABLE,
-	MULTIMEDIA
+	MULTIMEDIA,
+	
+	LAYOUT
 }
