@@ -144,7 +144,7 @@
 				}
 			</style>
 			
-			<h:form id="formGemini">
+			<h:form id="formChat">
 				<div class="ui-fluid" style="display:flex;overflow:hidden;height: calc(100vh - 150px)">
 					<aside class="sidebar-interacoes">
 						<div class="sidebar-header">
@@ -206,7 +206,7 @@
 											process="@this"
 											styleClass="botao"
 											onclick="dlg.show()"
-											update=":formGeminiDados"
+											update=":formChatDados"
 											oncomplete="dlgGeminiDados.show()"
 											actionListener="#{chatBean.prepararDadosApresentacao(statusMensagem.index)}">
 											
@@ -250,7 +250,7 @@
 			<script type="text/javascript">
 			// <![CDATA[
 				function preencherInputHiddenPergunta() {
-					let inputHiddenPergunta = document.getElementById('formGemini:inputHiddenPergunta');
+					let inputHiddenPergunta = document.getElementById('formChat:inputHiddenPergunta');
 					let inputPergunta = document.getElementById('inputPergunta');
 					
 					if (inputHiddenPergunta && inputPergunta) {
