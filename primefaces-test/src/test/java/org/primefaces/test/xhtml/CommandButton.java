@@ -18,12 +18,8 @@ class CommandButton {
 		public void action(Node node, Path path) {
 			Node styleClass = node.getAttributes().getNamedItem("styleClass");
 			
-			if (styleClass == null) {
-				fail("O atributo 'styleClass' é necessário!\n" + path.toString());
-			}
-			
-			if (!styleClass.getTextContent().equals("botao")) {
-				fail("O atributo 'styleClass' deve estar preenchido com 'botao'!\n" + path.toString());
+			if (styleClass != null) {
+				fail("O atributo 'styleClass' é desnecessário!\n" + path.toString());
 			}
 		}
 		

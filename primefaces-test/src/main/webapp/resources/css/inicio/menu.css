@@ -1,9 +1,4 @@
 :root {
-	--border: #32323D;
-	--bg-card: #252531;
-	--text-dim: #A8A8B3;
-	--bg-sidebar: #1A1A22;
-	
 	--width-sidebar: 280px;
 }
 
@@ -13,8 +8,7 @@
 	position: fixed;
 	overflow: auto;
 	width: var(--width-sidebar);
-	background-color: var(--bg-sidebar);
-	border-right: 1px solid var(--border);
+	background-color: var(--surface-a);
 }
 
 .sidebar::-webkit-scrollbar {
@@ -23,16 +17,16 @@
 }
 
 .sidebar::-webkit-scrollbar-track {
-	background: #1A1A22;
+	background: var(--surface-c);
 }
 
 .sidebar::-webkit-scrollbar-thumb {
 	border-radius: 10px;
-	background: #444452;
+	background: var(--surface-d);
 }
 
 .sidebar::-webkit-scrollbar-thumb:hover {
-	background: #FF4D4D;
+	background: var(--primary-color);
 }
 
 .brand {
@@ -49,19 +43,19 @@
 	padding: 8px;
 	cursor: pointer;
 	font-size: 0.9rem;
-	color: var(--text-dim);
+	color: var(--text-color);
 }
 
 .nav-links li:hover, .active li {
-	color: #FFF;
 	border-radius: 4px;
-	background: var(--border);
+	color: var(--text-color);
+	background: var(--surface-b);
 }
 
 hr {
 	border: 0;
 	margin: 15px 0;
-	border-top: 1px solid var(--border);
+	border-top: 1px solid var(--surface-b);
 }
 
 .content {
