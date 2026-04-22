@@ -11,24 +11,6 @@
 	background-color: var(--surface-a);
 }
 
-.sidebar::-webkit-scrollbar {
-	width: 6px;
-	height: 6px;
-}
-
-.sidebar::-webkit-scrollbar-track {
-	background: var(--surface-c);
-}
-
-.sidebar::-webkit-scrollbar-thumb {
-	border-radius: 10px;
-	background: var(--surface-d);
-}
-
-.sidebar::-webkit-scrollbar-thumb:hover {
-	background: var(--primary-color);
-}
-
 .brand {
 	font-size: 1.5rem;
 }
