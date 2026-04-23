@@ -17,13 +17,17 @@ public class LazyVirtualScrollingModel extends LazyDataModel<Entidade> {
 		return load(first, pageSize, null, null, null);
 	}
 	
+	@Override
+	public int count(Map<String, FilterMeta> filterBy) {
+		return 2_000;
+	}
+	
 	public List<Entidade> load(int first, int pageSize, String sortField, SortOrder sortOrder, Map<String,Object> filters) {
 		System.out.println("first: " + first);
 		System.out.println("pageSize: " + pageSize);
 		System.out.println("calc: " + (first + pageSize));
 		System.out.println("-------------------");
 		
-		setRowCount(2_000);
 		return LongStream.rangeClosed(first, (first + pageSize))
 		        .mapToObj(Entidade::new)
 		        .collect(Collectors.toList());
