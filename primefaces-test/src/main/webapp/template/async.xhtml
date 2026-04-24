@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<ui:composition>
+		<p:dialog
+			id="dAsync"
+			modal="true"
+			closable="false"
+			widgetVar="dlgAsync"
+			header="Executando Tarefa">
+			
+			<h:form id="formAsync">
+				<p:poll
+					interval="2"
+			        update="@form"
+					autoStart="false"
+					widgetVar="pollAsync"
+					listener="#{asyncSchedule.verificar}"
+		        />
+		        
+				<h:outputText
+		        	value="Processo em andamento"
+		        	rendered="#{asyncSchedule.resultado.status eq null or asyncSchedule.resultado.status eq 'EM_ANDAMENTO'}"
+	        	/>
+		        
+		        <p:commandButton
+					ajax="false"
+					value="Download"
+					rendered="#{asyncSchedule.resultado.status eq 'CONCLUIDO'}"
+					onclick="PrimeFaces.monitorDownload(monitorDownloadStart, monitorDownloadStop)">
+					
+					<p:fileDownload value="#{asyncSchedule.resultado.streamedContent}"/>
+				</p:commandButton>
+			</h:form>
+	    </p:dialog>
+	</ui:composition>
+</html>

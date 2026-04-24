@@ -11,11 +11,11 @@
 		<ui:define name="conteudo">
 			<h:form id="formFileDownloadBuilder">
 				<p:commandButton
-					ajax="false"
-					value="Download">
-					
-					<p:fileDownload value="#{fileDownloadBean.file}"/>
-				</p:commandButton>
+					process="@this"
+					value="Download"
+					onclick="PF('dlgAsync').show()"
+					actionListener="#{asyncSchedule.disparar('org.primefaces.test.file.FileDownloadTask')}"
+				/>
 			</h:form>
 		</ui:define>
 	</ui:composition>
