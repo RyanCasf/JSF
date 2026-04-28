@@ -7,7 +7,6 @@
 	
 	<ui:composition>
 		<p:dialog
-			id="dAsync"
 			modal="true"
 			closable="false"
 			widgetVar="dlgAsync"
@@ -15,27 +14,38 @@
 			
 			<h:form id="formAsync">
 				<p:poll
-					interval="2"
-			        update="@form"
+					interval="5"
 					autoStart="false"
 					widgetVar="pollAsync"
 					listener="#{asyncSchedule.verificar}"
 		        />
 		        
-				<h:outputText
-		        	value="Processo em andamento"
-		        	rendered="#{asyncSchedule.resultado.status eq null or asyncSchedule.resultado.status eq 'EM_ANDAMENTO'}"
-	        	/>
-		        
+				<h:outputText value="Processo em andamento"/>
+			</h:form>
+	    </p:dialog>
+	    
+	    <p:dialog
+			modal="true"
+			header="Pronto"
+			widgetVar="dlgAsyncPronto">
+			
+			<h:form id="formAsyncPronto">
 		        <p:commandButton
 					ajax="false"
 					value="Download"
-					rendered="#{asyncSchedule.resultado.status eq 'CONCLUIDO'}"
 					onclick="PrimeFaces.monitorDownload(monitorDownloadStart, monitorDownloadStop)">
 					
-					<p:fileDownload value="#{asyncSchedule.resultado.streamedContent}"/>
+					<p:fileDownload value="#{asyncSchedule.negocio.task.conteudo}"/>
 				</p:commandButton>
 			</h:form>
+	    </p:dialog>
+	    
+	    <p:dialog
+			modal="true"
+			header="Erro"
+			widgetVar="dlgAsyncErro">
+			
+			<h:outputText value="Algo deu errado no método assíncrono!"/>
 	    </p:dialog>
 	</ui:composition>
 </html>

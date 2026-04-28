@@ -1,9 +1,6 @@
 package org.primefaces.test.async;
 
-import java.io.Serializable;
-
-public interface AsyncTask <T> extends Serializable, Runnable {
+public interface AsyncTask <T> extends Runnable  {
 	
 	T getConteudo();
-	String getNomeTarefa();
 }

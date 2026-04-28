@@ -6,58 +6,45 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 import org.primefaces.PrimeFaces;
-import org.primefaces.model.StreamedContent;
+import org.primefaces.test.crud.retorno.RetornoNegocio;
+import org.primefaces.test.crud.retorno.RetornoNegocio.Resultado;
 
 import lombok.Getter;
+import lombok.Setter;
 
 @Named
+@Getter
+@Setter
 @ViewScoped
 public class AsyncSchedule implements Serializable {
 	
-	private String nomeClasse;
-	
-	@Getter
-	private DownloadContext resultado;
+	private AsyncScheduleNegocio negocio;
 	
 	public void disparar(String nomeClasse) {
-		this.nomeClasse = nomeClasse;
-		PrimeFaces.current().executeScript("PF('pollAsync').start()");
+		negocio = new AsyncScheduleNegocio();
+		RetornoNegocio retorno = negocio.disparar(nomeClasse);
+		
+		if (retorno.getResultado() == Resultado.ACEITO) {
+			PrimeFaces.current().executeScript("PF('pollAsync').start()");
+		}
     }
 	
-	public <T> void verificar() {
-		if (resultado == null) {
-			resultado = new DownloadContext();
-			resultado.setStatus(AsyncStatus.EM_ANDAMENTO);
-			
-			AsyncTask<T> task = null;
-			try {
-		        Class<?> clazz = Class.forName(nomeClasse);
-		        task = (AsyncTask<T>) clazz.newInstance();
-		    }
-			catch (Exception e) {
-		        e.printStackTrace();
-		    }
-			
-			try {
-	            task.run();
-	            T conteudo = task.getConteudo();
-	            
-	            if (conteudo instanceof StreamedContent) {
-	                resultado.setStreamedContent((StreamedContent) conteudo);
-	            }
-	            
-	            resultado.setStatus(AsyncStatus.CONCLUIDO);
-	        }
-			catch (Exception e) {
-	        	e.printStackTrace();
-	        	resultado.setStatus(AsyncStatus.ERRO);
-	        }
-			
+	public void verificar() {
+		AsyncStatus retorno = negocio.verificar();
+		
+		System.out.println(retorno);
+		if (retorno == AsyncStatus.EM_ANDAMENTO) {
 			return;
 		}
-		
-		if (resultado.getStatus() != AsyncStatus.EM_ANDAMENTO) {
+		else if (retorno == AsyncStatus.CONCLUIDO) {
+			PrimeFaces.current().executeScript("PF('dlgAsync').hide()");
 			PrimeFaces.current().executeScript("PF('pollAsync').stop()");
+			PrimeFaces.current().executeScript("PF('dlgAsyncPronto').show()");
+		}
+		else if (retorno == AsyncStatus.ERRO) {
+			PrimeFaces.current().executeScript("PF('dlgAsync').hide()");
+			PrimeFaces.current().executeScript("PF('pollAsync').stop()");
+			PrimeFaces.current().executeScript("PF('dlgAsyncErro').show()");
 		}
 	}
 }

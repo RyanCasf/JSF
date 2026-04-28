@@ -13,11 +13,6 @@ public class FileDownloadTask implements AsyncTask<StreamedContent> {
 	private StreamedContent streamedContent;
 	
 	@Override
-	public String getNomeTarefa() {
-		return "PrimeFaces Guide";
-	}
-	
-	@Override
 	public void run() {
 		InputStream inputStream = FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream("/resources/pdf/guide.pdf");
 		streamedContent = DefaultStreamedContent.builder()
