@@ -12,6 +12,7 @@ public class LinkDAO {
 		return new ArrayList<>(Arrays.asList(
 				LinkDTO.builder().group(FORM).value("AutoComplete").outcome("/autocomplete").build(),
 				LinkDTO.builder().group(FORM).value("Data").outcome("/data").build(),
+				LinkDTO.builder().group(FORM).value("InputGroup").outcome("/form/inputGroup").build(),
 				LinkDTO.builder().group(FORM).value("InputNumber").outcome("/form/inputNumber").build(),
 				LinkDTO.builder().group(FORM).value("Select One Menu").outcome("/selectOneMenu").build(),
 				LinkDTO.builder().group(FORM).value("Select One Menu (Lazy)").outcome("/select-one-menu/lazy").build(),
