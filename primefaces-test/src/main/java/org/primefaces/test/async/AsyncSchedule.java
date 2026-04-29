@@ -32,7 +32,6 @@ public class AsyncSchedule implements Serializable {
 	public void verificar() {
 		AsyncStatus retorno = negocio.verificar();
 		
-		System.out.println(retorno);
 		if (retorno == AsyncStatus.EM_ANDAMENTO) {
 			return;
 		}
