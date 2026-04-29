@@ -11,11 +11,15 @@
 		<ui:define name="conteudo">
 			<style>
 				.ql-snow .ql-stroke, .ql-snow .ql-fill, .ql-snow .ql-stroke .ql-fill {
-					stroke: white !important;
+					stroke: var(--text-color) !important;
 				}
 				
-				.ql-picker-label {
-					color: white !important;
+				.ql-picker-label, .ql-container {
+					color: var(--text-color) !important;
+				}
+				
+				#ql-picker-options-0, #ql-picker-options-1 {
+					background-color: var(--surface-a);
 				}
 			</style>
 			
