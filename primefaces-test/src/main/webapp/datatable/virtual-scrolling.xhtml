@@ -9,22 +9,24 @@
 		<ui:define name="titulo">Virtual Scrolling</ui:define>
 		
 		<ui:define name="conteudo">
-			<p:dataTable
-				var="e"
-				rows="40"
-				lazy="true"
-				scrollRows="20"
-				scrollable="true"
-				scrollHeight="300"
-				virtualScroll="true"
-				value="#{virtualScrollingBean.model}"
-				emptyMessage="Nenhum dado encontrado!">
-				
-				<p:column headerText="Ordem">
-					<h:outputText value="#{e.ordem}"/>
-				</p:column>
-				
-			</p:dataTable>
+			<h:form id="formVirtualScrolling">
+				<p:dataTable
+					var="e"
+					rows="40"
+					lazy="true"
+					scrollRows="20"
+					scrollable="true"
+					scrollHeight="300"
+					virtualScroll="true"
+					value="#{virtualScrollingBean.model}"
+					emptyMessage="Nenhum dado encontrado!">
+					
+					<p:column headerText="Ordem">
+						<h:outputText value="#{e.ordem}"/>
+					</p:column>
+					
+				</p:dataTable>
+			</h:form>
 		</ui:define>
 	</ui:composition>
 </html>
