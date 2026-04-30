@@ -24,92 +24,89 @@
 			</style>
 			
 			<h:form id="formularioDataTable">
-				<p:growl id="informacao" showDetail="true" />
-				
-				<p:panel header="Dados" id="dadosPainel">
-					<p:messages severity="fatal,error" closable="true" />
+				<div class="ui-fluid">
+					<p:growl id="informacao" showDetail="true" severity="info"/>
 					
-					<p:panelGrid 
-						columns="3" 
-						layout="grid" 
-						styleClass="ui-panelgrid-blank">
+					<p:panel header="Dados" id="dadosPainel">
+						<p:messages severity="fatal,error" closable="true"/>
 						
-						<h:panelGroup>
-							<h:outputText value="Nome:" style="font-weight:bold;display:block" />
-							<p:inputText 
-								id="nome" 
-								required="true" 
-								style="width:100%" 
-								value="#{dataTableBean.contato.nome}" 
-								requiredMessage="O campo 'Nome' está inválido!" />
+						<p:panelGrid 
+							columns="3" 
+							layout="grid" 
+							styleClass="ui-panelgrid-blank" 
+							columnClasses="ui-grid-col-4,ui-grid-col-4,ui-grid-col-4">
+							
+							<h:panelGroup>
+								<h:outputText value="Nome:" style="font-weight:bold"/>
+								<p:inputText 
+									required="true" 
+									style="width:100%" 
+									value="#{dataTableBean.contato.nome}" 
+									requiredMessage="O campo 'Nome' está inválido!" />
+							</h:panelGroup>
+							
+							<h:panelGroup>
+								<h:outputText value="UF:" style="font-weight:bold"/>
+								<p:autoComplete 
+									dropdown="true" 
+									scrollHeight="250" 
+									placeholder="Selecione..." 
+									emptyMessage="Nenhuma UF encontrada!" 
+									value="#{dataTableBean.contato.unidadeFederativa}" 
+		                            completeMethod="#{dataTableBean.unidadesFederativas}" />
+							</h:panelGroup>
+							
+							<h:panelGroup>
+								<h:outputText value="Cidade:" style="font-weight:bold"/>
+								<p:inputText 
+									required="true" 
+									style="width:100%" 
+									value="#{dataTableBean.contato.cidade}" 
+									requiredMessage="O campo 'Cidade' está inválido!" />
+							</h:panelGroup>
+							
+						</p:panelGrid>
+						
+						<p:separator />
+						
+						<h:panelGroup style="display:block;text-align:center">
+							<p:commandButton 
+								id="botaoAdicionar"
+								value="Adicionar" 
+								style="width:120px" 
+								update=":formularioDataTable" 
+								process=":formularioDataTable:dadosPainel" 
+								actionListener="#{dataTableBean.adicionarContato}" />
 								
-							<p:message for="nome" />
+							<p:tooltip for="botaoAdicionar" value="Adicionar" position="bottom" />
 						</h:panelGroup>
 						
-						<h:panelGroup>
-							<h:outputText value="UF:" style="font-weight:bold;display:block" />
-							<p:autoComplete 
-								dropdown="true" 
-								scrollHeight="250" 
-								placeholder="Selecione..." 
-								emptyMessage="Nenhuma UF encontrada!" 
-								value="#{dataTableBean.contato.unidadeFederativa}" 
-	                            completeMethod="#{dataTableBean.unidadesFederativas}" />
-						</h:panelGroup>
-						
-						<h:panelGroup>
-							<h:outputText value="Cidade:" style="font-weight:bold;display:block" />
-							<p:inputText 
-								id="cidade" 
-								required="true" 
-								style="width:100%" 
-								value="#{dataTableBean.contato.cidade}" 
-								requiredMessage="O campo 'Cidade' está inválido!" />
-								
-							<p:message for="cidade" />
-						</h:panelGroup>
-						
-					</p:panelGrid>
+					</p:panel>
 					
 					<p:separator />
 					
-					<h:panelGroup style="display:block;text-align:center">
-						<p:commandButton 
-							id="botaoAdicionar"
-							value="Adicionar" 
-							style="width:120px" 
-							update=":formularioDataTable" 
-							process=":formularioDataTable:dadosPainel" 
-							actionListener="#{dataTableBean.adicionarContato}" />
-							
-						<p:tooltip for="botaoAdicionar" value="Adicionar" position="bottom" />
-					</h:panelGroup>
-					
-				</p:panel>
-				
-				<p:separator />
-				
-				<p:dataTable 
-					var="c" 
-					scrollable="true" 
-					scrollHeight="300" 
-					id="tabelaContatos" 
-					value="#{dataTableBean.contatos}" 
-					emptyMessage="Nenhum contato adicionado!">
-					
-					<p:column headerText="Nome">
-						<h:outputText value="#{c['nome']}" />
-					</p:column>
-					
-					<p:column headerText="UF">
-						<h:outputText value="#{c['unidadeFederativa']}" />
-					</p:column>
-					
-					<p:column headerText="Cidade">
-						<h:outputText value="#{c['cidade']}" />
-					</p:column>
-					
-				</p:dataTable>
+					<p:dataTable 
+						var="c" 
+						scrollable="true" 
+						scrollHeight="300" 
+						id="tabelaContatos" 
+						value="#{dataTableBean.contatos}" 
+						emptyMessage="Nenhum contato adicionado!">
+						
+						<p:column headerText="Nome">
+							<h:outputText value="#{c['nome']}" />
+						</p:column>
+						
+						<p:column headerText="UF">
+							<h:outputText value="#{c['unidadeFederativa']}" />
+						</p:column>
+						
+						<p:column headerText="Cidade">
+							<h:outputText value="#{c['cidade']}" />
+						</p:column>
+						
+					</p:dataTable>
+				</div>
 			</h:form>
 			
 			<p:ajaxStatus onstart="PF('statusDialog').show()" oncomplete="PF('statusDialog').hide()"/>
