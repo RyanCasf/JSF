@@ -56,6 +56,6 @@ a {
 	text-decoration: none !important;
 }
 
-label, span {
+label, span, p {
 	color: var(--text-color);
 }
