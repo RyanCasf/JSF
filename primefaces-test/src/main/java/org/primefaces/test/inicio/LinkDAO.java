@@ -33,6 +33,8 @@ public class LinkDAO {
 				LinkDTO.builder().group(DIALOG).value("Dialog").outcome("/dialog").build(),
 				LinkDTO.builder().group(DIALOG).value("Dialog (load spinner)").outcome("/dialog/load-spinner").build(),
 				LinkDTO.builder().group(SEPARATOR).build(),
+				LinkDTO.builder().group(OVERLAY).value("Confirm Popup").outcome("/overlay/confirm-popup").build(),
+				LinkDTO.builder().group(SEPARATOR).build(),
 				LinkDTO.builder().group(MENU).value("TabMenu").outcome("/menu/tab-menu").build(),
 				LinkDTO.builder().group(SEPARATOR).build(),
 				LinkDTO.builder().group(SCHEDULE).value("Schedule").outcome("/schedule").build(),

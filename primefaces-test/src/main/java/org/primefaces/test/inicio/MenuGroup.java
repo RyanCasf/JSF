@@ -9,6 +9,7 @@ public enum MenuGroup {
 	MENU,
 	DIALOG,
 	BUTTON,
+	OVERLAY,
 	DIAGRAM,
 	SCHEDULE,
 	TIMELINE,

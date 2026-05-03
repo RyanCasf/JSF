@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<ui:composition>
+		<h:outputStylesheet rendered="#{inicioBean.tema eq 'REDMOND'}">
+			.ui-confirm-popup .ui-confirm-popup-content {
+				border: none;
+				padding: 1rem;
+			}
+			
+			.ui-confirm-popup .ui-confirm-popup-footer {
+				border: none;
+				text-align: right;
+				padding: 0 1rem 1rem 1rem;
+			}
+			
+			.ui-confirm-popup .ui-confirm-popup-footer button {
+				margin: 0 0.5rem 0 0;
+				width: auto;
+			}
+		</h:outputStylesheet>
+		
+		<h:outputStylesheet>
+			.ui-confirm-popup:before, .ui-confirm-popup:after {
+				border: none !important;
+			}
+		</h:outputStylesheet>
+		
+		<p:confirmPopup global="true">
+			<p:commandButton
+				value="Não"
+				type="button"
+				styleClass="ui-confirm-popup-no ui-button-flat"/>
+			
+			<p:commandButton
+				value="Sim"
+				type="button"
+				styleClass="ui-confirm-popup-yes"/>
+		</p:confirmPopup>
+	</ui:composition>
+</html>
