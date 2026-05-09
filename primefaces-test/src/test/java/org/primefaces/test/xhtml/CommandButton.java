@@ -11,21 +11,23 @@ import org.w3c.dom.Node;
 @DisplayName("p:commandButton")
 class CommandButton {
 	
+	private static final String NAME_EXPRESSION = "//*[local-name()='commandButton']";
+	
 	@Nested
-	class StyleClass implements Parser {
+	class Action implements Parser {
 		
 		@Override
 		public void action(Node node, Path path) {
-			Node styleClass = node.getAttributes().getNamedItem("styleClass");
+			Node action = node.getAttributes().getNamedItem("action");
 			
-			if (styleClass != null) {
-				fail("O atributo 'styleClass' é desnecessário!\n" + path.toString());
+			if (action != null) {
+				fail("O atributo 'action' é desnecessário!\n" + path.toString());
 			}
 		}
 		
 		@Override
 		public String expression() {
-			return "//*[local-name()='commandButton']";
+			return NAME_EXPRESSION;
 		}
 	}
 }
