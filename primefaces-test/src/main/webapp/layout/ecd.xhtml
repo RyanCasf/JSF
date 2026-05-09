@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<ui:composition template="/template/padrao.xhtml">
+		<ui:define name="titulo">ECD</ui:define>
+		
+		<ui:define name="conteudo">
+			<style>
+				.grid-template-ecd {
+					gap: 1rem;
+					display: grid;
+					grid-template-columns: 250px 1fr;
+				}
+			</style>
+			
+			<h:form id="formECD">
+				<div class="ui-fluid grid-template-ecd">
+					<h:panelGroup id="ecd-panel-group-tabela">
+						<p:dataTable
+							var="r"
+							scrollable="true"
+							value="#{eCDBean.service.ecd.tabela}"
+							emptyMessage="Nenhum bloco encontrado!">
+							
+							<p:column headerText="Bloco">
+								<h:outputText value="#{r.title}" style="display:block"/>
+								<h:outputText value="#{r.description}" styleClass="text-color-secondary font-size-secondary"/>
+							</p:column>
+							
+						</p:dataTable>
+					</h:panelGroup>
+					
+					<h:panelGroup id="ecd-panel-group-conteudo">
+						
+					</h:panelGroup>
+				</div>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</html>

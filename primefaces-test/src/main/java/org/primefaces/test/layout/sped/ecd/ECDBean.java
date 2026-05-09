@@ -1,0 +1,18 @@
+package org.primefaces.test.layout.sped.ecd;
+
+import java.io.Serializable;
+
+import javax.faces.view.ViewScoped;
+import javax.inject.Named;
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+@Named
+@ViewScoped
+public class ECDBean implements Serializable {
+	
+	private ECDService service = new ECDService();
+}
