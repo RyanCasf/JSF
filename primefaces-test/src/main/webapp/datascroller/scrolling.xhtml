@@ -9,16 +9,16 @@
 		<ui:define name="titulo">DataScroller</ui:define>
 		
 		<ui:define name="conteudo">
-			<p:dataScroller
-				var="e"
-                rows="40"
-                lazy="true"
-                chunkSize="20"
-                mode="document"
-                value="#{virtualScrollingBean.model}">
-                
-				<h:outputText value="#{e.ordem}"/>
-			</p:dataScroller>
+			<h:form id="formDataScroller">
+				<p:dataScroller
+					var="e"
+	                lazy="true"
+	                chunkSize="50"
+	                value="#{virtualScrollingBean.model}">
+	                
+					<h:outputText value="#{e.ordem}"/>
+				</p:dataScroller>
+			</h:form>
 		</ui:define>
 	</ui:composition>
 </html>

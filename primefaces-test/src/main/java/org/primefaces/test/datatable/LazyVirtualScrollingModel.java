@@ -19,7 +19,7 @@ public class LazyVirtualScrollingModel extends LazyDataModel<Entidade> {
 		System.out.println("calc: " + (first + pageSize));
 		System.out.println("-------------------");
 		
-		return LongStream.rangeClosed(first, (first + pageSize))
+		return LongStream.range(first, (first + pageSize))
 		        .mapToObj(Entidade::new)
 		        .collect(Collectors.toList());
 	}
